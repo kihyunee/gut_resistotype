@@ -38,19 +38,22 @@ We used COG, the 2014 update version, accessed through NCBI FTP at December 2018
 
 Our analysis using COG is focused at the list of [40 universally single-copy orthologs, SCGs](https://github.com/kihyunee/gut_resistotype/blob/data/list_speci_universal_single_copy_genes.cogs)
 
-Mapping between the gi numbers used in COG protein sequence headers to the 40 SCGs is needed and provided in this link: [gi-to-COG mapping for the SCGs](https://github.com/kihyunee/gut_resistotype/blob/data/gi_to_cog.tab.scg_only)
+Mapping from gi numbers (used in COG protein sequence headers) to COG numbers is needed and provided in this link:[gi-to-COG mapping](https://www.dropbox.com/s/srr6tzim5d4f324/gi_to_cog.tab?dl=0)
+
+shorter version for [gi-to-COG mapping for the SCGs](https://github.com/kihyunee/gut_resistotype/blob/data/gi_to_cog.tab.scg_only)
 
 ## From assembled metagenomes to annotated ORFs
 
 Scenario: 
 
-**_from_ input metagenome assemblies** {SAMPLE}.fasta
+**STEP 1. _from_ input metagenome assemblies** {SAMPLE}.fasta
 
 **_create_ ORF nucleotide/protein sequence fasta and gff files** {SAMPLE}.fna {SAMPLE}.faa {SAMPLE}.gff
 
 > prodigal -p meta -q -f gff -i {SAMPLE}.fasta -o {SAMPLE}.gff -a {SAMPLE}.faa -d {SAMPLE}.fna 
 
-**_from_ ORF protein fasta** {SAMPLE}.faa
+
+**STEP 2. _from_ ORF protein fasta** {SAMPLE}.faa
 
 **_search_ blastp hits in CARD, _filter_ hits and _annotate_ gene families to the ORFs** {SAMPLE}.CARD2017.blastp.i80d80.assign
 
@@ -59,9 +62,11 @@ Scenario:
 > java TableColumnReformatVerticalSepField -in {SAMPLE}.CARD2017.blastp.i80d80 -col 2 -field 2 -header F -out {SAMPLE}.CARD2017.blastp.i80d80.acctmp
 > java TableTranslateColumnByDictionaryLkh -i {SAMPLE}.CARD2017.blastp.i80d80.acctmp -icol 2 -iheader F -d protein_fasta_protein_homolog_model.refined.accession_2_ARG_cluster_assign.tab -dheader T -q 1 -t 2 -o {SAMPLE}.CARD2017.blastp.i80d80.assign
 
+
 **_search_ blastp hits in COG, _filter_ SCG hits and _annotate_ SCG COG numbers to the ORFs** {SAMPLE}.COG.blastp.cog.scg
 > diamond blastp -d prot2003-2014.fa.dmnd -p {threads} -e 1e-7 -k 1 -q {SAMPLE}.faa -o {SAMPLE}.COG.blastp
-> java TableTranslateColumnByDictionaryLkh -i {SAMPLE}.COG.blastp -icol 2 -iheader F -d {params.gi_to_cog} -dheader F -q 1 -t 2 -o {output.cog}
+> java TableTranslateColumnByDictionaryLkh -i {SAMPLE}.COG.blastp -icol 2 -iheader F -d gi_to_cog.tab -dheader F -q 1 -t 2 -o {SAMPLE}.COG.blastp.cog
+> java TableFilteringRowsLkh -tbl {SAMPLE}.COG.blastp.cog -sep t -headerRow F -col 2 -targetList list_speci_universal_single_copy_genes.cogs -out {SAMPLE}.COG.blastp.cog.scg
 
 
 ## From reference genomes to annotated ORFs
