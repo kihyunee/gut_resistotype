@@ -42,6 +42,28 @@ Mapping between the gi numbers used in COG protein sequence headers to the 40 SC
 
 ## From assembled metagenomes to annotated ORFs
 
+Scenario: 
+
+**_from_ input metagenome assemblies** {SAMPLE}.fasta
+
+**_create_ ORF nucleotide/protein sequence fasta and gff files** {SAMPLE}.fna {SAMPLE}.faa {SAMPLE}.gff
+
+> prodigal -p meta -q -f gff -i {SAMPLE}.fasta -o {SAMPLE}.gff -a {SAMPLE}.faa -d {SAMPLE}.fna 
+
+**_from_ ORF protein fasta** {SAMPLE}.faa
+
+**_search_ blastp hits in CARD, _filter_ hits and _annotate_ gene families to the ORFs** {SAMPLE}.CARD2017.blastp.i80d80.assign
+
+> diamond blastp -d protein_fasta_protein_homolog_model.refined.legit.fasta.dmnd -p {threads} -e 1e-20 -k 1 -q {SAMPLE}.faa -o {SAMPLE}.CARD2017.blastp
+> java BlastResultFilterLkh -in {SAMPLE}.CARD2017.blastp -idcut 80 -dfasta protein_fasta_protein_homolog_model.refined.legit.fasta -dcovCut 80 -out {SAMPLE}.CARD2017.blastp.i80d80
+> java TableColumnReformatVerticalSepField -in {SAMPLE}.CARD2017.blastp.i80d80 -col 2 -field 2 -header F -out {SAMPLE}.CARD2017.blastp.i80d80.acctmp
+> java TableTranslateColumnByDictionaryLkh -i {SAMPLE}.CARD2017.blastp.i80d80.acctmp -icol 2 -iheader F -d protein_fasta_protein_homolog_model.refined.accession_2_ARG_cluster_assign.tab -dheader T -q 1 -t 2 -o {SAMPLE}.CARD2017.blastp.i80d80.assign
+
+**_search_ blastp hits in COG, _filter_ SCG hits and _annotate_ SCG COG numbers to the ORFs** {SAMPLE}.COG.blastp.cog.scg
+> diamond blastp -d prot2003-2014.fa.dmnd -p {threads} -e 1e-7 -k 1 -q {SAMPLE}.faa -o {SAMPLE}.COG.blastp
+> java TableTranslateColumnByDictionaryLkh -i {SAMPLE}.COG.blastp -icol 2 -iheader F -d {params.gi_to_cog} -dheader F -q 1 -t 2 -o {output.cog}
+
+
 ## From reference genomes to annotated ORFs
 
 ## From annotated metagenomic ORFs to nomalized abundance (copies per genome, cpg) profile of ARG families in samples
