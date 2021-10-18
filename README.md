@@ -26,7 +26,7 @@ We used the database of protein sequences for known ARGs, which was created by m
 
 For this modified version of CARD, the following files are provided in this repository.
 
-(1) [filtered protein homolog model fasta](https://github.com/kihyunee/gut_resistotype/blob/data/protein_fasta_protein_homolog_model.refined.legit.fasta)
+(1) [fasta file of protein homolog model reference sequences after filtering out variant/mutation-dependent resistance genes](https://github.com/kihyunee/gut_resistotype/blob/data/protein_fasta_protein_homolog_model.refined.legit.fasta)
 
 (2) [protein accessions to ARG families map](https://github.com/kihyunee/gut_resistotype/blob/data/protein_fasta_protein_homolog_model.refined.accession_2_ARG_cluster_assign.tab)
 
@@ -47,7 +47,9 @@ shorter version for [gi-to-COG mapping for the SCGs](https://github.com/kihyunee
 
 ## Clustered catalogue of ARG ORFs from human microbiome metagenomes and prokaryotic reference genomes
 Nucleotide sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes: [Fasta file]()
+
 Protein sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes: [Fasta file]()
+
 - Fasta header lines contain several information including sample origin, MAG affiliation, SGB (species) affiliation, taxonomy, and ARG family annotation
 ORF-by-ORF attributes from 99%-level clustering and plasmid analyses: [tsv file]()
 
@@ -65,6 +67,14 @@ ORF-by-ORF attributes from 99%-level clustering and plasmid analyses: [tsv file]
 Below are the commands and scripts used in our main analytical steps.
 
 Script files called in the commands below can be found in the script section ([scripts](https://github.com/kihyunee/gut_resistotype/tree/main/scripts)) of this repository.
+
+External tools called in the commands are:
+- diamond: [diamond](https://github.com/bbuchfink/diamond)
+- prodigal: [prodigal](https://github.com/hyattpd/Prodigal)
+
+Databases and fixed parameter files (such as list of SCGs, list of ARG families) can be found in the data branch of this repository.
+
+_Note_ that before using the .fasta database files in blastp searches you have to create diamond database _locally_ using your version of diamond. 
 
 
 ## From assembled metagenomes to annotated ORFs
@@ -106,6 +116,13 @@ Note that file paths in the snakemake should be adjusted to fit with yours.
 
 
 ## From reference genomes to annotated ORFs
+
+For genome assemblies, we used the set of commands that are same with what was used for metagenom assemlbies.
+
+Snakemake that we used to predict and annotate ORFs in metagenome assemblies is available here [genome ORF snake](https://github.com/kihyunee/gut_resistotype/blob/main/scripts/refgenome_annotation.snake)
+
+Note that file paths in the snakemake should be adjusted to fit with yours.
+
 
 ## From annotated metagenomic ORFs to nomalized abundance (copies per genome, cpg) profile of ARG families in samples
 
