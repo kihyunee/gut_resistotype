@@ -48,13 +48,18 @@ Mapping from gi numbers (used in COG protein sequence headers) to COG numbers is
 shorter version for [gi-to-COG mapping for the SCGs](https://github.com/kihyunee/gut_resistotype/blob/data/gi_to_cog.tab.scg_only)
 
 
-## Clustered catalogue of ARG ORFs from human microbiome metagenomes and prokaryotic reference genomes
-Nucleotide sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes: [Fasta file]()
+## (Clustered) Catalogue of ARG ORFs from human microbiome metagenomes and prokaryotic reference genomes
 
-Protein sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes: [Fasta file]()
+*Before clustering*
+
+Nucleotide sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes: [Fasta file](https://www.dropbox.com/s/7zl4h7lxubbcwjs/AMR_genes.gut_and_refseq.pool.corrected.s2_.fna?dl=0)
+
+Protein sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes: [Fasta file](https://www.dropbox.com/s/wrveigfi7opyiyf/AMR_genes.gut_and_refseq.pool.corrected.s2_.faa?dl=0)
 
 - Fasta header lines contain several information including sample origin, MAG affiliation, SGB (species) affiliation, taxonomy, and ARG family annotation
-ORF-by-ORF attributes from 99%-level clustering and plasmid analyses: [tsv file]()
+
+*After clustering*
+ORF-by-ORF attributes from 99%-level clustering and plasmid analyses: [tsv file](https://www.dropbox.com/s/nnqwoixvx7tygw9/nt_cluster_99.per_ORF_integrated_result.all_ORFs.tsv?dl=0)
 
 
 ## Normalized resistance gene profiles (cpg, samples X ARG families matrix) of adult stool metagenomes
@@ -131,7 +136,12 @@ Note that file paths in the snakemake should be adjusted to fit with yours.
 
 **Case A, where you want to use contig coverage depth calculated by yourself through aligning reads to the contigs.**
 
-_starting_ with **assembled contigs** in {SAMPLE}.fasta and **raw reads** in {SAMPLE}_1.fastq.gz and {SAMPLE}_2.fastq.gz
+Run the following steps for each/every sample individually.
+
+_starting_ with **assembled contigs** in {SAMPLE}.fasta and **raw reads** in {SAMPLE}\_1.fastq.gz and {SAMPLE}\_2.fastq.gz
+
+and **ORF to SCG, ORF to CARD annotation outputs**  {SAMPLE}.COG.blastp.cog.scg  {SAMPLE}.CARD.blastp.i80d80.assign
+
 ```
 python fasta_filter_by_length.py --fasta {SAMPLE}.fasta --min_length 500 --out_tab {SAMPLE}.length.tab --out_bed {SAMPLE}.filt_500bp.bed --out_fasta {SAMPLE}.filt_500bp.fasta
 
@@ -154,6 +164,15 @@ python cpg_profile_from_contig_orf_annotation.py --cov_stat {SAMPLE}.filt_500bp.
  
 **Case B, where you want to use the coverage information stored in the _metaSpades_ contigs header lines**
 
+Run the following steps for each/every sample individually.
+
+_starting_ with **assembled contigs** in {SAMPLE}.fasta 
+
+and **ORF to SCG, ORF to CARD annotation outputs**  {SAMPLE}.COG.blastp.cog.scg  {SAMPLE}.CARD.blastp.i80d80.assign
+
+```
+python cpg_profile_from_contig_orf_annotation.py --cov_stat {SAMPLE}.fasta --depth_col 0 --scg_annot {SAMPLE}.COG.blastp.cog.scg --scg_panel list_speci_universal_single_copy_genes.cogs --target_annot {SAMPLE}.CARD.blastp.i80d80.assign --target_panel reference_ARG_assigns.txt --out {SAMPLE}.ARG_panel.cpg
+```
 
 
 ## From annotated ORFs from metagenomes and reference genomes to the catalogue of ARG ORFs
