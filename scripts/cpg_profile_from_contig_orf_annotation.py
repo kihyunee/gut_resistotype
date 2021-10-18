@@ -11,7 +11,7 @@ in the format of [CONTIG]_[index] thereby the ORF can be mapped to the CONTIG ju
 """
 
 parser = argparse.ArgumentParser(description = "Input specifications ")
-parser.add_argument("--cov_stat", dest="contig_cov_stat_table", type=str, required=True, help="contig_coverage_stat_table; header yes; column 1 automatically the contig ID; YOU manually specify the column for mean alignment depth value")
+parser.add_argument("--cov_stat", dest="contig_cov_stat_table", type=str, required=True, help="contig coverage stat table. header yes; column 1 must be the contig ID; column for mean coverage depth value should be provided in --depth_col. IF YOU WANT TO USE the metaSPADES depth information in the contig header lines, provide --cov_stat {CONTIG_FASTA_FILE} --depth_col 0")
 parser.add_argument("--depth_col", dest="depth_col_obi", type=int, required=True, help="specify which (1-based index) column in --cov_stat is the mean read depth of the contig")
 parser.add_argument("--scg_annot", dest="scg_annot_table", type=str, required=True, help="table, no header, column 1 ORF, column 2 COG, other columns free")
 parser.add_argument("--scg_panel", dest="fixed_scgcog_listfile", type=str, required=True, help="provide the fixed list of COG numbers that are considered single-copy genes (SCGs)")
@@ -28,6 +28,13 @@ target_annot_table = args.target_annot_table
 fixed_target_panel_listfile = args.fixed_target_panel_listfile
 output_tab = args.output_tab
 output_scgrec_tab = output_tab + ".scg_record"
+
+use_depth_in_header = False
+contig_cov_stat_fasta = 'NA'
+if depth_col_obi == 0:
+    use_depth_in_header = True
+    contig_cov_stat_fasta = contig_cov_stat_table
+
 
 
 # list of SCG and list of target annotation
@@ -77,15 +84,26 @@ num_annot_val = len(list_annot_val)
 
 # contig coverage depth map
 dict_ctg_mean_depth = {}
-depth_col_zbi = depth_col_obi - 1
-fr = open(contig_cov_stat_table, "r")
-line = fr.readline()
-for line in fr:
-    fields = line.strip().split("\t")
-    ctg = fields[0]
-    depth = float(fields[depth_col_zbi])
-    dict_ctg_mean_depth[ctg] = depth
-fr.close()
+if use_depth_in_header:
+    fr = open(contig_cov_stat_fasta, "r")
+    for line in fr:
+        if line.strip().startswith('>'):
+            contig_id = line.strip()[1:]
+            cov_float = float(contig_id[(contig_id.rfind('_cov_') + 5):])
+            dict_ctg_mean_depth[contig_id] = cov_float
+    fr.close()
+
+
+else:
+    depth_col_zbi = depth_col_obi - 1
+    fr = open(contig_cov_stat_table, "r")
+    line = fr.readline()
+    for line in fr:
+        fields = line.strip().split("\t")
+        ctg = fields[0]
+        depth = float(fields[depth_col_zbi])
+        dict_ctg_mean_depth[ctg] = depth
+    fr.close()
 
 
 
