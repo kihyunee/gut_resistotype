@@ -18,13 +18,25 @@ Sample metadata provided in Pasolli et al. 2019 was additionally curated with re
 
 Assembly accession numbers (RefSeq/GenBank) of the prokaryotic genomes analyzed in our study is provided in this link: [genome accession list](https://github.com/kihyunee/gut_resistotype/blob/data/refseq_genbank_assembly_acc_pair.nover.tsv)
 
-**3. Modified CARD database**
+**3. Modified version of CARD**
 
 We used the database of protein sequences for known ARGs, which was created by modifying the October 2017 version of [CARD](https://card.mcmaster.ca/), cite [Jia et al. 2017](https://doi.org/10.1093/nar/gkw1004)
 
 For this modified version of CARD, the following files are provided in this repository.
 
+(1) [filtered protein homolog model fasta](https://github.com/kihyunee/gut_resistotype/blob/data/protein_fasta_protein_homolog_model.refined.legit.fasta)
 
+(2) [protein accessions to ARG families map](https://github.com/kihyunee/gut_resistotype/blob/data/protein_fasta_protein_homolog_model.refined.accession_2_ARG_cluster_assign.tab)
+
+(3) [ARG families to antibiotics map](https://github.com/kihyunee/gut_resistotype/blob/data/ClusterAssign_to_Revised_Antibiotic.map)
+
+(4) [ARG families to mechanisms map](https://github.com/kihyunee/gut_resistotype/blob/data/ClusterAssign_to_Revised_Mechanism.map)
+
+**4. COG protein reference sequences**
+
+We used COG, the 2014 update version, accessed through NCBI FTP at December 2018 using the following link [COG 2014 protein fasta](https://ftp.ncbi.nih.gov/pub/COG/COG2014/data/prot2003-2014.fa.gz)
+
+Our analysis using COG is focused at the list of [40 universally single-copy orthologs]()
 
 ## From assembled metagenomes to annotated ORFs
 
