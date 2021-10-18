@@ -1,0 +1,66 @@
+import glob
+
+Dict_DB={"COG":{"database_path":"/mnt/gpfs/kihyunee/project/DB_files/COG/prot2003-2014.gi.fa","evalue":1e-7},"CARD":{"database_path":"/mnt/gpfs/kihyunee/project/DB_files/CARD_Oct_2017/protein_fasta_protein_homolog_model.refined.legit.fasta","evalue":1e-20}}
+
+STUDIES=[study.rstrip() for study in open("/mnt/gpfs/nicola/List_to_do.tsv")]
+LIST_STUDIES_SAMPLES=[[path.split("/")[0],path.split("/")[-1].split('.fasta')[0]] for study in STUDIES for path in glob.glob(study+"/unbinned_assemblies_not1kfiltered/*.fasta") ]
+EXTENSION={"COG":".COG.blastp.cog.scg","CARD":".CARD2017.blastp.i80d80.assign"}
+LIST_RESULTS=[study+"/ORF_blastp_"+db+"_processed/"+sample+EXTENSION[db] for study,sample in LIST_STUDIES_SAMPLES for db in ["COG","CARD"]]
+
+
+rule all :
+	input: LIST_RESULTS
+
+rule prodigal:
+	input :
+		"{Study}_assemblies/unbinned_assemblies_not1kfiltered/{Sample}.fasta"
+	output:
+		gff="{Study}_assemblies/ORF_gff_files/{Sample}.gff",
+		faa="{Study}_assemblies/ORF_faa_files/{Sample}.faa",
+		fna="{Study}_assemblies/ORF_fna_files/{Sample}.fna"
+	shell :
+		"prodigal -p meta -q -f gff -i {input} -o {output.gff} -a {output.faa} -d {output.fna} "
+
+rule diamond:
+	input :
+		"{Study}_assemblies/ORF_faa_files/{Sample}.faa"
+	output:
+		"{Study}_assemblies/ORF_blastp_{DB}/{Sample}.{DB}.blastp"
+	params:
+		db=lambda w:Dict_DB[w.DB]["database_path"],
+		evalue=lambda w:Dict_DB[w.DB]["evalue"]
+	threads:
+		10
+	shell :
+		"diamond blastp -d {params.db} -p {threads} -e {params.evalue} -k 1 -q {input} -o {output}"
+
+rule Filter_and_rename_CARD:
+	input:
+		blastp="{Study}_assemblies/ORF_blastp_{DB}/{Sample}.{DB}.blastp"
+	output: 
+		id80="{Study}_assemblies/ORF_blastp_{DB}_processed/{Sample}.{DB}.blastp.i80d80",
+		acctmp="{Study}_assemblies/ORF_blastp_{DB}_processed/{Sample}.{DB}.blastp.i80d80.acctmp",
+		assign="{Study}_assemblies/ORF_blastp_{DB}_processed/{Sample}.{DB}2017.blastp.i80d80.assign"
+	params:
+		db=lambda w:Dict_DB[w.DB]["database_path"],
+		assign="/mnt/gpfs/kihyunee/project/DB_files/CARD_Oct_2017/protein_fasta_protein_homolog_model.refined.accession_2_ARG_cluster_assign.tab"
+	shell: """
+	java -cp /mnt/gpfs/kihyunee/install/javaclass BlastResultFilterLkh -in {input.blastp} -idcut 80 -dfasta {params.db} -dcovCut 80 -out {output.id80} 
+	java -cp /mnt/gpfs/kihyunee/install/javaclass TableColumnReformatVerticalSepField -in {output.id80} -col 2 -field 2 -header F -out {output.acctmp}
+	java -cp /mnt/gpfs/kihyunee/install/javaclass TableTranslateColumnByDictionaryLkh -i {output.acctmp} -icol 2 -iheader F -d {params.assign} -dheader T -q 1 -t 2 -o {output.assign}
+	"""
+
+rule Filter_and_rename_COG:
+	input:
+		blastp="{Study}/ORF_blastp_{DB}/{Sample}.{DB}.blastp"
+	output: 
+		cog="{Study}/ORF_blastp_{DB}_processed/{Sample}.{DB}.blastp.cog",
+		SCG="{Study}/ORF_blastp_{DB}_processed/{Sample}.{DB}.blastp.cog.scg"
+	params:
+		gi_to_cog="/mnt/gpfs/kihyunee/project/DB_files/COG/gi_to_cog.tab",
+		SCG="/mnt/gpfs/kihyunee/project/DB_files/COG/list_speci_universal_single_copy_genes.cogs"
+	shell: """
+	java -cp /mnt/gpfs/kihyunee/install/javaclass TableTranslateColumnByDictionaryLkh -i {input.blastp} -icol 2 -iheader F -d {params.gi_to_cog} -dheader F -q 1 -t 2 -o {output.cog}
+	java -cp /mnt/gpfs/kihyunee/install/javaclass TableFilteringRowsLkh -tbl {output.cog} -sep t -headerRow F -col 2 -targetList {params.SCG} -out {output.SCG}
+	"""
+
