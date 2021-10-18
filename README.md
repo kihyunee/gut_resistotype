@@ -36,7 +36,9 @@ For this modified version of CARD, the following files are provided in this repo
 
 We used COG, the 2014 update version, accessed through NCBI FTP at December 2018 using the following link [COG 2014 protein fasta](https://ftp.ncbi.nih.gov/pub/COG/COG2014/data/prot2003-2014.fa.gz)
 
-Our analysis using COG is focused at the list of [40 universally single-copy orthologs]()
+Our analysis using COG is focused at the list of [40 universally single-copy orthologs, SCGs](https://github.com/kihyunee/gut_resistotype/blob/data/list_speci_universal_single_copy_genes.cogs)
+
+Mapping between the gi numbers used in COG protein sequence headers to the 40 SCGs is needed and provided in this link: [gi-to-COG mapping for the SCGs](https://github.com/kihyunee/gut_resistotype/blob/data/gi_to_cog.tab.scg_only)
 
 ## From assembled metagenomes to annotated ORFs
 
