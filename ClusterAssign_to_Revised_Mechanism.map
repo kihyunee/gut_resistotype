@@ -1,0 +1,765 @@
+assignment	Mechanism
+novA	Efflux pump
+acrD	Efflux pump
+amrA	Efflux pump
+amrB	Efflux pump
+cml-clusterA	Efflux pump
+cml-clusterC	Efflux pump
+cmr	Efflux pump
+cmx	Efflux pump
+fexA	Efflux pump
+floR	Efflux pump
+cml-clusterB	Efflux pump
+tcmA	Efflux pump
+farA	Efflux pump
+farB	Efflux pump
+Omp38	Efflux pump
+OmpK37	Efflux pump
+bcr-1	Efflux pump
+facT	Efflux pump
+lrfA	Efflux pump
+patA	Efflux pump
+patB	Efflux pump
+mdtG	Efflux pump
+abcA	Efflux pump
+abeM	Efflux pump
+abeS	Efflux pump
+acrA	Efflux pump
+acrB	Efflux pump
+AcrE	Efflux pump
+AcrF	Efflux pump
+adeA	Efflux pump
+adeB	Efflux pump
+adeC	Efflux pump
+adeF	Efflux pump
+adeG/ceoB	Efflux pump
+adeH	Efflux pump
+adeI	Efflux pump
+adeJ	Efflux pump
+adeK	Efflux pump
+AxyX	Efflux pump
+AxyY	Efflux pump
+blt	Efflux pump
+bmr	Efflux pump
+cdeA	Efflux pump
+ceoA	Efflux pump
+cmeA	Efflux pump
+cmeB	Efflux pump
+cmeC	Efflux pump
+efmA	Efflux pump
+efpA	Efflux pump
+efrA	Efflux pump
+efrB	Efflux pump
+emeA	Efflux pump
+emrA	Efflux pump
+emrB	Efflux pump
+emrD	Efflux pump
+emrE-Eco	Efflux pump
+emrE-Pae	Efflux pump
+emrK	Efflux pump
+emrY	Efflux pump
+hmrM	Efflux pump
+hp1181	Efflux pump
+hp1184	Efflux pump
+lmrP	Efflux pump
+mdfA	Efflux pump
+mdsA	Efflux pump
+mdsB	Efflux pump
+mdsC	Efflux pump
+mdtA	Efflux pump
+mdtB	Efflux pump
+mdtC	Efflux pump
+mdtE	Efflux pump
+mdtF	Efflux pump
+mdtH	Efflux pump
+MdtK	Efflux pump
+mdtL	Efflux pump
+mdtM	Efflux pump
+mdtN	Efflux pump
+mdtO	Efflux pump
+mdtP	Efflux pump
+mepA	Efflux pump
+MexA	Efflux pump
+MexB	Efflux pump
+MexC	Efflux pump
+MexD	Efflux pump
+MexE	Efflux pump
+MexF	Efflux pump
+MexG	Efflux pump
+MexH	Efflux pump
+MexI	Efflux pump
+MexJ	Efflux pump
+MexK	Efflux pump
+mexM	Efflux pump
+mexN	Efflux pump
+mexP	Efflux pump
+mexQ	Efflux pump
+MexV	Efflux pump
+MexW	Efflux pump
+mexX	Efflux pump
+mexY	Efflux pump
+msbA	Efflux pump
+mtrC	Efflux pump
+mtrD	Efflux pump
+mtrE	Efflux pump
+MuxA	Efflux pump
+MuxB	Efflux pump
+MuxC	Efflux pump
+norA	Efflux pump
+norB	Efflux pump
+opcM	Efflux pump
+OpmB	Efflux pump
+OpmD	Efflux pump
+opmE	Efflux pump
+OprA	Efflux pump
+OprJ	Efflux pump
+OprM	Efflux pump
+OprN	Efflux pump
+OprZ	Efflux pump
+oqxA	Efflux pump
+oqxB	Efflux pump
+PmpM	Efflux pump
+pmrA	Efflux pump
+qacA/B	Efflux pump
+qacH	Efflux pump
+QepA	Efflux pump
+sav1866	Efflux pump
+smeA	Efflux pump
+smeB	Efflux pump
+smeC	Efflux pump
+smeD	Efflux pump
+smeE	Efflux pump
+smeF	Efflux pump
+tap	Efflux pump
+TolC	Efflux pump
+ykkC	Efflux pump
+ykkD	Efflux pump
+carA	Efflux pump
+ImrB	Efflux pump
+ImrC	Efflux pump
+lmrD	Efflux pump
+LpeA	Efflux pump
+LpeB	Efflux pump
+lsaA	Efflux pump
+lsaB	Efflux pump
+lsaC	Efflux pump
+lsaE	Efflux pump
+macA	Efflux pump
+macB	Efflux pump
+mef(B)	Efflux pump
+mefA	Efflux pump
+mefC	Efflux pump
+mefE	Efflux pump
+mel	Efflux pump
+msrA	Efflux pump
+msrB	Efflux pump
+msrC	Efflux pump
+msrE	Efflux pump
+oleB	Efflux pump
+oleC	Efflux pump
+salA	Efflux pump
+smrB	Efflux pump
+tlrC	Efflux pump
+vga	Efflux pump
+vgaB	Efflux pump
+vgaC	Efflux pump
+vgaD	Efflux pump
+vgaE	Efflux pump
+bcrA	Efflux pump
+bcrB	Efflux pump
+rosA	Efflux pump
+rosB	Efflux pump
+YojI	Efflux pump
+TaeA	Efflux pump
+otr(B)	Efflux pump
+otrC	Efflux pump
+tcr3	Efflux pump
+tet(30)	Efflux pump
+tet(31)	Efflux pump
+tet(33)	Efflux pump
+tet(35)	Efflux pump
+tet(38)	Efflux pump
+tet(39)	Efflux pump
+tet(40)	Efflux pump
+tet(41)	Efflux pump
+tet(42)	Efflux pump
+tet(43)	Efflux pump
+tet(45)	Efflux pump
+tet(A/B)	Efflux pump
+tet(C)	Efflux pump
+tet(D)	Efflux pump
+tet(E)	Efflux pump
+tet(G)	Efflux pump
+tet(H)	Efflux pump
+tet(J)	Efflux pump
+tet(K)	Efflux pump
+tet(L)	Efflux pump
+tet(V)	Efflux pump
+tet(Y)	Efflux pump
+tet(Z)	Efflux pump
+tetA(46)	Efflux pump
+tetA(48)	Efflux pump
+tetA(60)	Efflux pump
+tetA(P)	Efflux pump
+tetB(46)	Efflux pump
+tetB(48)	Efflux pump
+tetB(60)	Efflux pump
+OpmH	Efflux pump
+TriA	Efflux pump
+TriB	Efflux pump
+TriC	Efflux pump
+fusB	etc
+AAC(1)-I/AAC(3)-Ia	Inactivation
+AAC(2)-Ia	Inactivation
+AAC(2)-Ib	Inactivation
+AAC(2)-Ic	Inactivation
+AAC(2)-Id	Inactivation
+AAC(2)-Ie	Inactivation
+AAC(2)-IIb	Inactivation
+AAC(3)-Ib	Inactivation
+AAC(3)-Ib-AAC(6)-Ib	Inactivation
+AAC(3)-Ic	Inactivation
+AAC(3)-Id	Inactivation
+AAC(3)-IIa/IIc	Inactivation
+AAC(3)-IIb	Inactivation
+AAC(3)-IIIa	Inactivation
+AAC(3)-IIIb/IIIc	Inactivation
+AAC(3)-IV	Inactivation
+AAC(3)-IXa	Inactivation
+AAC(3)-VIa	Inactivation
+AAC(3)-VIIa	Inactivation
+AAC(3)-VIIIa	Inactivation
+AAC(3)-Xa	Inactivation
+AAC(6)-29a/29b	Inactivation
+AAC(6)-30-AAC(6)-Ib	Inactivation
+AAC(6)-33/I30	Inactivation
+AAC(6)-34	Inactivation
+AAC(6)-clusterA	Inactivation
+AAC(6)-clusterB	Inactivation
+AAC(6)-clusterC	Inactivation
+AAC(6)-clusterD	Inactivation
+AAC(6)-Ia	Inactivation
+AAC(6)-Iaa/Iy	Inactivation
+AAC(6)-Iad	Inactivation
+AAC(6)-Iae/Iai	Inactivation
+AAC(6)-Iaj	Inactivation
+AAC(6)-Iak/Iz	Inactivation
+AAC(6)-Ib-SK	Inactivation
+AAC(6)-Ic	Inactivation
+AAC(6)-Ie-APH(2)-Ia	Inactivation
+AAC(6)-If	Inactivation
+AAC(6)-Ig	Inactivation
+AAC(6)-Ii	Inactivation
+AAC(6)-IIb	Inactivation
+AAC(6)-Iid	Inactivation
+AAC(6)-Iih	Inactivation
+AAC(6)-Ik	Inactivation
+AAC(6)-Ip	Inactivation
+AAC(6)-Isa	Inactivation
+aad(6)/ANT(6)-Ia	Inactivation
+aadA/AAC-clusterB	Inactivation
+aadA4/5	Inactivation
+aadA9	Inactivation
+aadA-clusterA	Inactivation
+aadA-clusterC	Inactivation
+aadK	Inactivation
+ANT(2)-Ia	Inactivation
+ANT(3)-IIa	Inactivation
+ANT(3)-IIb	Inactivation
+ANT(3)-IIc	Inactivation
+ANT(4)-Ia	Inactivation
+ANT(4)-Ib	Inactivation
+ANT(4)-IIa	Inactivation
+ANT(4)-IIb	Inactivation
+ANT(6)-Ib	Inactivation
+ANT(9)	Inactivation
+APH(2)-Ie/IVa	Inactivation
+APH(2)-If	Inactivation
+APH(2)-Ig	Inactivation
+APH(2)-IIa	Inactivation
+APH(2)-IIIa	Inactivation
+APH(3)-Ia	Inactivation
+APH(3)-Ib	Inactivation
+APH(3)-Ic	Inactivation
+APH(3)-IIa	Inactivation
+APH(3)-IIb	Inactivation
+APH(3)-IIc	Inactivation
+APH(3)-IIIa	Inactivation
+APH(3)-IVa	Inactivation
+APH(3)-IX	Inactivation
+APH(3)-V	Inactivation
+APH(3)-VI/VIa	Inactivation
+APH(3)-VIIa	Inactivation
+APH(3)-VIII	Inactivation
+APH(4)-Ia	Inactivation
+APH(4)-Ib	Inactivation
+APH(6)-Ia	Inactivation
+APH(6)-Ib	Inactivation
+APH(6)-Ic	Inactivation
+APH(6)-Id	Inactivation
+APH(7)-Ia	Inactivation
+APH(9)-Ia	Inactivation
+APH(9)-Ib	Inactivation
+apmA	Inactivation
+cpaA	Inactivation
+spd	Inactivation
+catB-clusterA	Inactivation
+cat86	Inactivation
+cat-Atu	Inactivation
+catB	Inactivation
+catB7	Inactivation
+catB9	Inactivation
+cat-Bcl	Inactivation
+cat-Cco	Inactivation
+cat-clusterA	Inactivation
+cat-clusterB	Inactivation
+cat-clusterC	Inactivation
+cat-clusterD	Inactivation
+catD/P	Inactivation
+catII	Inactivation
+catIII	Inactivation
+cat-Pmi	Inactivation
+catQ	Inactivation
+catS	Inactivation
+CatU	Inactivation
+cat-Van	Inactivation
+cmlv	Inactivation
+ACC	Inactivation
+ACT/MIR	Inactivation
+ADC-2	Inactivation
+AER-1	Inactivation
+AIM	Inactivation
+AQU-1	Inactivation
+BEL	Inactivation
+BJP-1	Inactivation
+Bla1/BcI	Inactivation
+Bla2/BcII	Inactivation
+BlaB	Inactivation
+blaF	Inactivation
+CARB-clusterA	Inactivation
+CARB-clusterB	Inactivation
+CARB-clusterC	Inactivation
+CARCBL	Inactivation
+CAU-1	Inactivation
+CblA	Inactivation
+CcrA	Inactivation
+cepA	Inactivation
+CepS	Inactivation
+CfxA	Inactivation
+CMY/CFE/LAT	Inactivation
+CMY/MOX-clusterA	Inactivation
+CMY/MOX-clusterB	Inactivation
+CMY/MOX-clusterC	Inactivation
+cphA/imiHS	Inactivation
+CPS-1/ESP-1	Inactivation
+CTX-M-clusterA	Inactivation
+CTX-M-clusterB	Inactivation
+CTX-M-clusterC	Inactivation
+CTX-M-clusterD	Inactivation
+DHA	Inactivation
+DIM-1	Inactivation
+EBR-1	Inactivation
+EXO-1	Inactivation
+FEZ	Inactivation
+FOX	Inactivation
+GES	Inactivation
+GIM	Inactivation
+GOB	Inactivation
+HMB-1	Inactivation
+IMI	Inactivation
+IMP	Inactivation
+IND-clusterA	Inactivation
+IND-clusterB	Inactivation
+IND-clusterC	Inactivation
+JOHN-1	Inactivation
+KHM-1	Inactivation
+KPC	Inactivation
+L1	Inactivation
+LAR-18	Inactivation
+LCR/NPS	Inactivation
+LEN	Inactivation
+LRA-1	Inactivation
+LRA-10	Inactivation
+LRA-12	Inactivation
+LRA-13	Inactivation
+LRA-17	Inactivation
+LRA-19	Inactivation
+LRA-2	Inactivation
+LRA-3	Inactivation
+LRA-5	Inactivation
+LRA-7/9	Inactivation
+LRA-8	Inactivation
+MOX-9	Inactivation
+MSI-1	Inactivation
+MUS-1/2	Inactivation
+NDM	Inactivation
+OCH	Inactivation
+OKP-A	Inactivation
+OKP-B	Inactivation
+OXA-12	Inactivation
+OXA-18	Inactivation
+OXA-184	Inactivation
+OXA-198	Inactivation
+OXA-209	Inactivation
+OXA-22	Inactivation
+OXA-29	Inactivation
+OXA-347	Inactivation
+OXA-45	Inactivation
+OXA-50	Inactivation
+OXA-55	Inactivation
+OXA-60	Inactivation
+OXA-61	Inactivation
+OXA-62	Inactivation
+OXA-85	Inactivation
+OXA-9	Inactivation
+OXA-clusterA1	Inactivation
+OXA-clusterA2	Inactivation
+OXA-clusterB	Inactivation
+OXA-clusterC	Inactivation
+OXA-clusterD	Inactivation
+OXA-clusterE	Inactivation
+OXA-clusterF	Inactivation
+OXA-clusterG	Inactivation
+OXA-clusterH	Inactivation
+OXA-clusterI	Inactivation
+OXA-clusterJ	Inactivation
+OXA-clusterK	Inactivation
+OXA-clusterL	Inactivation
+OXA-clusterM	Inactivation
+OXA-clusterN	Inactivation
+OXA-clusterO	Inactivation
+OXA-clusterP	Inactivation
+OXA-MSI	Inactivation
+OXY	Inactivation
+PC1/blaZ	Inactivation
+PDC	Inactivation
+PEDO-1	Inactivation
+PEDO-2	Inactivation
+PEDO-3	Inactivation
+PER	Inactivation
+R39	Inactivation
+Rm3	Inactivation
+ROB	Inactivation
+Sed-1	Inactivation
+SFB	Inactivation
+SFH-1	Inactivation
+SHV	Inactivation
+SIM-1	Inactivation
+SLB	Inactivation
+SMB	Inactivation
+SME	Inactivation
+SPG-1	Inactivation
+SPM-1	Inactivation
+SRT	Inactivation
+TEM	Inactivation
+THIN-B	Inactivation
+TLA-1/3	Inactivation
+TLA-2	Inactivation
+TMB-1/2	Inactivation
+TUS	Inactivation
+VCC-1	Inactivation
+VEB	Inactivation
+VIM-clusterA	Inactivation
+VIM-clusterB	Inactivation
+y56	Inactivation
+FomA	Inactivation
+FomB	Inactivation
+FosA	Inactivation
+FosA2	Inactivation
+FosA3/4	Inactivation
+FosA5/6	Inactivation
+FosA7	Inactivation
+FosB	Inactivation
+FosB3	Inactivation
+FosC	Inactivation
+FosC2	Inactivation
+FosK	Inactivation
+FosX	Inactivation
+fusD	Inactivation
+fusH	Inactivation
+BRP	Inactivation
+lnuA	Inactivation
+lnuC	Inactivation
+lnuF/G	Inactivation
+lnuB	Inactivation
+lnuD	Inactivation
+lnuE	Inactivation
+lnuG	Inactivation
+EreA	Inactivation
+EreB	Inactivation
+gimA	Inactivation
+mgtA	Inactivation
+mphA	Inactivation
+mphB	Inactivation
+mph-BceA	Inactivation
+mph-BceB	Inactivation
+mphC	Inactivation
+mphD	Inactivation
+mphE	Inactivation
+mphG	Inactivation
+mphI	Inactivation
+Mrx	Inactivation
+oleD	Inactivation
+oleI	Inactivation
+vatA	Inactivation
+vatB	Inactivation
+vatC	Inactivation
+vatD	Inactivation
+vatE	Inactivation
+vatF	Inactivation
+vatH	Inactivation
+VatI	Inactivation
+vgbA	Inactivation
+vgbB	Inactivation
+vgbC	Inactivation
+SAT-1	Inactivation
+SAT-3	Inactivation
+SAT-4	Inactivation
+BahA	Inactivation
+vph	Inactivation
+EdeQ	Inactivation
+arr-1	Inactivation
+arr-2/3	Inactivation
+arr-4/7	Inactivation
+arr-5	Inactivation
+arr-8	Inactivation
+iri	Inactivation
+rgt1438	Inactivation
+rphA	Inactivation
+rphB	Inactivation
+tet37	Inactivation
+tetX	Inactivation
+tmrB	Reduced permeability
+kdpE	Regulator
+blaR1	Regulator
+mecR1	Regulator
+NmcR	Regulator
+adeL	Regulator
+arlR	Regulator
+arlS	Regulator
+ArmR	Regulator
+baeR	Regulator
+baeS	Regulator
+cpxA	Regulator
+CpxR-Eco	Regulator
+CpxR-Pae	Regulator
+evgA	Regulator
+evgS	Regulator
+gadW	Regulator
+gadX	Regulator
+golS	Regulator
+H-NS	Regulator
+marA	Regulator
+mtrA	Regulator
+ramA	Regulator
+rob	Regulator
+sdiA	Regulator
+smeR	Regulator
+smeS	Regulator
+soxR	Regulator
+adeR	Regulator
+adeS	Regulator
+mecI	Should be deleted
+mecD	Should be deleted
+mgrA	Should be deleted
+AcrS	Should be deleted
+adeN	Should be deleted
+cmeR	Should be deleted
+CRP	Should be deleted
+emrR	Should be deleted
+mepR	Should be deleted
+MexL	Should be deleted
+blaI	Should be deleted
+mtrR	Should be deleted
+armA	Target alteration
+kamB	Target alteration
+npmA	Target alteration
+rmtA/B	Target alteration
+rmtC	Target alteration
+rmtD	Target alteration
+rmtF	Target alteration
+rmtG	Target alteration
+rmtH	Target alteration
+sgm	Target alteration
+vanA	Target alteration
+vanB	Target alteration
+vanC	Target alteration
+vanD	Target alteration
+vanE	Target alteration
+vanF	Target alteration
+vanG	Target alteration
+vanHA	Target alteration
+vanHB	Target alteration
+vanHD	Target alteration
+vanHF	Target alteration
+vanHM	Target alteration
+vanHO	Target alteration
+vanI	Target alteration
+vanJ	Target alteration
+vanKI	Target alteration
+vanL	Target alteration
+vanM	Target alteration
+vanN	Target alteration
+vanO	Target alteration
+vanRA	Target alteration
+vanRB	Target alteration
+vanRC	Target alteration
+vanRD	Target alteration
+vanRE	Target alteration
+vanRF	Target alteration
+vanRG	Target alteration
+vanRI	Target alteration
+vanRL	Target alteration
+vanRM	Target alteration
+vanRN	Target alteration
+vanRO	Target alteration
+vanSA	Target alteration
+vanSB	Target alteration
+vanSC	Target alteration
+vanSD	Target alteration
+vanSE	Target alteration
+vanSF	Target alteration
+vanSG	Target alteration
+vanSI	Target alteration
+vanSL	Target alteration
+vanSM	Target alteration
+vanSN	Target alteration
+vanSO	Target alteration
+vanTC	Target alteration
+vanTE	Target alteration
+vanTG	Target alteration
+vanTmL	Target alteration
+vanTN	Target alteration
+vanTrL	Target alteration
+vanUG	Target alteration
+vanVB	Target alteration
+vanWB	Target alteration
+vanWG	Target alteration
+vanWI	Target alteration
+vanXA/XM	Target alteration
+vanXB	Target alteration
+vanXD	Target alteration
+vanXF	Target alteration
+vanXI	Target alteration
+vanXO	Target alteration
+vanXYC	Target alteration
+vanXYE	Target alteration
+vanXYG	Target alteration
+vanXYL	Target alteration
+vanXYN	Target alteration
+vanYA	Target alteration
+vanYB	Target alteration
+vanYD	Target alteration
+vanYF	Target alteration
+vanYG	Target alteration
+vanYM	Target alteration
+vanZA	Target alteration
+vanZF	Target alteration
+cfrA	Target alteration
+cfrC	Target alteration
+cipA	Target alteration
+clbA	Target alteration
+clbB	Target alteration
+clbC	Target alteration
+chrB	Target alteration
+myrA	Target alteration
+RlmA	Target alteration
+tlrB	Target alteration
+EmrF	Target alteration
+Erm(30)	Target alteration
+Erm(31)	Target alteration
+Erm(33)	Target alteration
+Erm(34)	Target alteration
+Erm(35)	Target alteration
+Erm(36)	Target alteration
+Erm(37)	Target alteration
+Erm(38)	Target alteration
+Erm(39)	Target alteration
+Erm(41)	Target alteration
+Erm(42)	Target alteration
+Erm(43)	Target alteration
+Erm(44)	Target alteration
+Erm(47)	Target alteration
+ErmA	Target alteration
+ErmB	Target alteration
+ErmC	Target alteration
+ErmD	Target alteration
+ErmE	Target alteration
+ErmG	Target alteration
+ErmH	Target alteration
+ErmN	Target alteration
+ErmO	Target alteration
+ErmQ	Target alteration
+ErmR	Target alteration
+ErmS	Target alteration
+ErmT	Target alteration
+ErmU	Target alteration
+ErmV	Target alteration
+ErmW	Target alteration
+ErmX	Target alteration
+ErmY	Target alteration
+LlmA	Target alteration
+mprF-Brsu	Target alteration
+mprF-Bsu	Target alteration
+mprF-Cpe	Target alteration
+mprF-Lmo	Target alteration
+mprF-Sag	Target alteration
+bacA	Target alteration
+bcrC	Target alteration
+tsnR	Target alteration
+anrA-clusterA	Target alteration
+arnA-clusterB	Target alteration
+basS	Target alteration
+MCR-1/2	Target alteration
+MCR-3	Target alteration
+pgpB	Target alteration
+PmrC	Target alteration
+PmrE	Target alteration
+PmrF	Target alteration
+tet34	Target alteration
+mfd	Target protection
+mfpA	Target protection
+QnrA	Target protection
+QnrB	Target protection
+QnrC	Target protection
+QnrD	Target protection
+QnrS	Target protection
+QnrVC	Target protection
+RbpA	Target protection
+otr(A)	Target protection
+tet32	Target protection
+tet36	Target protection
+tet44	Target protection
+tetB(P)	Target protection
+tetM	Target protection
+tetO	Target protection
+tetQ	Target protection
+tetS	Target protection
+tetT	Target protection
+tetW	Target protection
+mecA	Target replacement
+mecB	Target replacement
+mecC	Target replacement
+sul1	Target replacement
+sul2	Target replacement
+sul3	Target replacement
+dfrA10	Target replacement
+dfrA19	Target replacement
+dfrA20	Target replacement
+dfrA23	Target replacement
+dfrA24	Target replacement
+dfrA26	Target replacement
+dfrA2d	Target replacement
+dfrA3	Target replacement
+dfrA8	Target replacement
+dfrA-clusterA	Target replacement
+dfrA-clusterB	Target replacement
+dfrA-clusterC	Target replacement
+dfrA-clusterD	Target replacement
+dfrB1/6	Target replacement
+dfrB2/3	Target replacement
+dfrC	Target replacement
+dfrD	Target replacement
+dfrE	Target replacement
+dfrF	Target replacement
+dfrG/K	Target replacement
