@@ -6,7 +6,9 @@
 Population-level impacts of antibiotic usage on the human gut microbiome. *Unpublished.* (2021) Kihyun Lee, Sebastien Raguideau, Kimmo Sir`en, Francesco Asnicar, Fabio Cumbo, Falk Hildebrand, Nicola Segata, Chang-Jun Cha, Christopher Quince
 
 
-## Data files used in the analyses
+# Data files
+
+## Databases used
 
 **1. Human microbiome metagenome assemblies previously published in [Pasolli et al., 2019, Cell 176, 649–662](https://doi.org/10.1016/j.cell.2019.01.001)**
 
@@ -41,6 +43,29 @@ Our analysis using COG is focused at the list of [40 universally single-copy ort
 Mapping from gi numbers (used in COG protein sequence headers) to COG numbers is needed and provided in this link:[gi-to-COG mapping](https://www.dropbox.com/s/srr6tzim5d4f324/gi_to_cog.tab?dl=0)
 
 shorter version for [gi-to-COG mapping for the SCGs](https://github.com/kihyunee/gut_resistotype/blob/data/gi_to_cog.tab.scg_only)
+
+
+## Clustered catalogue of ARG ORFs from human microbiome metagenomes and prokaryotic reference genomes
+Nucleotide sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes: [Fasta file]()
+Protein sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes: [Fasta file]()
+- Fasta header lines contain several information including sample origin, MAG affiliation, SGB (species) affiliation, taxonomy, and ARG family annotation
+ORF-by-ORF attributes from 99%-level clustering and plasmid analyses: [tsv file]()
+
+
+## Normalized resistance gene profiles (cpg, samples X ARG families matrix) of adult stool metagenomes
+[abundance cpg of ARG families in 6104 adult stool metagenomes](https://www.dropbox.com/s/qyudnh2cmm7unup/DS3.SCG_normalized_ARG_abund.columns_CARD_ref.n_6104.tsv?dl=0)
+[abundance cpg of ARG families in 6006 adult stool metagenomes after filtering out outliers](https://www.dropbox.com/s/i84y6xthebd1cvx/DS4b.SCG_normalized_ARG_abund.columns_CARD_ref.n_6006.tsv?dl=0)
+- Sample names are given as row names.
+- ARG family names are given as column names.
+
+
+
+# Analytical steps
+
+Below are the commands and scripts used in our main analytical steps.
+
+Script files called in the commands below can be found in the script section ([scripts](https://github.com/kihyunee/gut_resistotype/tree/main/scripts)) of this repository.
+
 
 ## From assembled metagenomes to annotated ORFs
 
@@ -86,6 +111,9 @@ Note that file paths in the snakemake should be adjusted to fit with yours.
 
 ## From annotated ORFs from metagenomes and reference genomes to the catalogue of ARG ORFs
 
-## From the catalogue of ARG ORFs to the clustered catalogues of ARGs
+## From catalogue of ARG ORFs to the clustered catalogues of ARGs
 
+## Assign LCA to the clusters of ARGs
+
+## Calculating resistotype scale index to the samples outside the original Pasolli et al. 2019 dataset
 
