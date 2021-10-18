@@ -34,6 +34,9 @@ For this modified version of CARD, the following files are provided in this repo
 
 (4) [ARG families to mechanisms map](https://github.com/kihyunee/gut_resistotype/blob/data/ClusterAssign_to_Revised_Mechanism.map)
 
+(5) [list of 752 ARG family names covered in our annotation DB](https://github.com/kihyunee/gut_resistotype/blob/data/reference_ARG_assigns.txt)
+
+
 **4. COG protein reference sequences**
 
 We used COG, the 2014 update version, accessed through NCBI FTP at December 2018 using the following link [COG 2014 protein fasta](https://ftp.ncbi.nih.gov/pub/COG/COG2014/data/prot2003-2014.fa.gz)
@@ -125,6 +128,33 @@ Note that file paths in the snakemake should be adjusted to fit with yours.
 
 
 ## From annotated metagenomic ORFs to nomalized abundance (copies per genome, cpg) profile of ARG families in samples
+
+**Case A, where you want to use contig coverage depth calculated by yourself through aligning reads to the contigs.**
+
+_starting_ with **assembled contigs** in {SAMPLE}.fasta and **raw reads** in {SAMPLE}_1.fastq.gz and {SAMPLE}_2.fastq.gz
+```
+python fasta_filter_by_length.py --fasta {SAMPLE}.fasta --min_length 500 --out_tab {SAMPLE}.length.tab --out_bed {SAMPLE}.filt_500bp.bed --out_fasta {SAMPLE}.filt_500bp.fasta
+
+bowtie2-build --quiet {SAMPLE}.filt_500bp.fasta {SAMPLE}.filt_500bp
+
+bowtie2 -q --very-fast -x {SAMPLE}.filt_500bp -1 {SAMPLE}_1.fastq.gz -2 {SAMPLE}_2.fastq.gz --no-unal -p 2 -S {SAMPLE}.filt_500bp.sam
+
+samtools view -b --threads 3 -o {SAMPLE}.filt_500bp.bam {SAMPLE}.filt_500bp.sam
+
+samtools sort --threads 3 -o {SAMPLE}.filt_500bp.sort.bam {SAMPLE}.filt_500bp.bam
+
+samtools index {SAMPLE}.filt_500bp.sort.bam
+
+samtools depth -b {SAMPLE}.filt_500bp.bed -m 15000 {SAMPLE}.filt_500bp.sort.bam > {SAMPLE}.filt_500bp.depth
+
+python samtools_depth_to_contig_stat.py --bed {SAMPLE}.filt_500bp.bed --depth {SAMPLE}.filt_500bp.depth --out {SAMPLE}.filt_500bp.cov_stat
+
+python cpg_profile_from_contig_orf_annotation.py --cov_stat {SAMPLE}.filt_500bp.cov_stat --depth_col 2 --scg_annot {SAMPLE}.COG.blastp.cog.scg --scg_panel list_speci_universal_single_copy_genes.cogs --target_annot {SAMPLE}.CARD.blastp.i80d80.assign --target_panel reference_ARG_assigns.txt --out {SAMPLE}.ARG_panel.cpg
+```
+ 
+**Case B, where you want to use the coverage information stored in the _metaSpades_ contigs header lines**
+
+
 
 ## From annotated ORFs from metagenomes and reference genomes to the catalogue of ARG ORFs
 
