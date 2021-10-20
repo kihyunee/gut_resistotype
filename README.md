@@ -1,6 +1,6 @@
 # gut_resistotype
 
-## About
+### About
 **This is the repository for the analysis scripts and data files used in the following study:**
 
 Population-level impacts of antibiotic usage on the human gut microbiome. *Unpublished.* (2021) Kihyun Lee, Sebastien Raguideau, Kimmo Sir`en, Francesco Asnicar, Fabio Cumbo, Falk Hildebrand, Nicola Segata, Chang-Jun Cha, Christopher Quince
@@ -8,7 +8,7 @@ Population-level impacts of antibiotic usage on the human gut microbiome. *Unpub
 
 # Data files
 
-## Databases used
+### Databases used
 
 **1. Human microbiome metagenome assemblies previously published in [Pasolli et al., 2019, Cell 176, 649–662](https://doi.org/10.1016/j.cell.2019.01.001)**
 
@@ -48,7 +48,7 @@ Mapping from gi numbers (used in COG protein sequence headers) to COG numbers is
 shorter version for [gi-to-COG mapping for the SCGs](https://github.com/kihyunee/gut_resistotype/blob/data/gi_to_cog.tab.scg_only)
 
 
-## (Clustered) Catalogue of ARG ORFs from human microbiome metagenomes and prokaryotic reference genomes
+### (Clustered) Catalogue of ARG ORFs from human microbiome metagenomes and prokaryotic reference genomes
 
 *Before clustering*
 
@@ -62,7 +62,7 @@ Protein sequences of all 2,566,577 ARG ORFs pooled from metagenomes and referenc
 ORF-by-ORF attributes from 99%-level clustering and plasmid analyses: [tsv file](https://www.dropbox.com/s/nnqwoixvx7tygw9/nt_cluster_99.per_ORF_integrated_result.all_ORFs.tsv?dl=0)
 
 
-## Normalized resistance gene profiles (cpg, samples X ARG families matrix) of adult stool metagenomes
+### Normalized resistance gene profiles (cpg, samples X ARG families matrix) of adult stool metagenomes
 [abundance cpg of ARG families in 6104 adult stool metagenomes](https://www.dropbox.com/s/qyudnh2cmm7unup/DS3.SCG_normalized_ARG_abund.columns_CARD_ref.n_6104.tsv?dl=0)
 [abundance cpg of ARG families in 6006 adult stool metagenomes after filtering out outliers](https://www.dropbox.com/s/i84y6xthebd1cvx/DS4b.SCG_normalized_ARG_abund.columns_CARD_ref.n_6006.tsv?dl=0)
 - Sample names are given as row names.
@@ -85,7 +85,7 @@ Databases and fixed parameter files (such as list of SCGs, list of ARG families)
 _Note_ that before using the .fasta database files in blastp searches you have to create diamond database _locally_ using your version of diamond. 
 
 
-## From assembled metagenomes to annotated ORFs
+### From assembled metagenomes to annotated ORFs
 
 **STEP 1. _from_ input metagenome assemblies** {SAMPLE}.fasta
 
@@ -123,7 +123,7 @@ Snakemake that we used to predict and annotate ORFs in metagenome assemblies is 
 Note that file paths in the snakemake should be adjusted to fit with yours.
 
 
-## From reference genomes to annotated ORFs
+### From reference genomes to annotated ORFs
 
 For genome assemblies, we used the set of commands that are same with what was used for metagenom assemlbies.
 
@@ -132,7 +132,7 @@ Snakemake that we used to predict and annotate ORFs in metagenome assemblies is 
 Note that file paths in the snakemake should be adjusted to fit with yours.
 
 
-## From annotated metagenomic ORFs to nomalized abundance (copies per genome, cpg) profile of ARG families in samples
+### From annotated metagenomic ORFs to nomalized abundance (copies per genome, cpg) profile of ARG families in samples
 
 **Case A, where you want to use contig coverage depth calculated by yourself through aligning reads to the contigs.**
 
@@ -175,11 +175,76 @@ python cpg_profile_from_contig_orf_annotation.py --cov_stat {SAMPLE}.fasta --dep
 ```
 
 
-## From annotated ORFs from metagenomes and reference genomes to the catalogue of ARG ORFs
+### From annotated ORFs from metagenomes and reference genomes to the catalogue of ARG ORFs
 
-## From catalogue of ARG ORFs to the clustered catalogues of ARGs
+We first collected the nucleotide sequences of the ORFs annotated as ARGs, from both metagenomes and genomes.
 
-## Assign LCA to the clusters of ARGs
+Each metagenome sample was processed with the following command.
 
-## Calculating resistotype scale index to the samples outside the original Pasolli et al. 2019 dataset
+```
+# SAMPLE = metagenome sample ID
+
+java PrepRichTitledFeatureFastaForDBHitORFs -s {SAMPLE} -d gut -f {SAMPLE}.fna -annot {SAMPLE}.CARD.blastp.i80d80.assign -o {SAMPLE}.CARD_hit_i80d80.faa -cgb {SAMPLE}.contig_bin.map -splabel {SAMPLE}.bin_SGB.map -sptax SGB.SGB_taxonomy.tsv -annotTitle CARD -genometype genomeBin -sptype SGB
+```
+
+Each refseq genome assembly was processed with the following command.
+
+```
+# GACC = genome assembly accession
+
+java PrepRichTitledFeatureFastaForDBHitORFs -s refseq -d refseq -f {GACC}.fna -annot {GACC}.CARD.blastp.i80d80.assign -o {GACC}.CARD_hit_i80d80.fna -wg {GACC} -gtax {GACC}.taxonomy_kpcofgst -annotTitle CARD -genometype refGenome -sptype refSpecies
+```
+
+The resulting fasta files, created for each metagenome/genome contains information-rich header lines which will be later used in the analyses downstream of clustering step.
+
+> # metagenomic ORF's header line
+> \>NODE_1_length_562825_cov_57.8364_1;sample=MV_FEI1_t1Q14;genomeBin=AsnicarF_2017__MV_FEI1_t1Q14__bin.8;SGB=10068;taxonomy=k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae|g__Escherichia|s__Escherichia_coli|t__SGB10068;dataset=gut;COG=COG1215
+
+> # genomic ORF's header line
+> \>NZ_AYGS01000026.1_2;sample=refseq;refGenome=GCF_000513795.2;refSpecies=TBD;taxonomy=k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Pseudomonadales|f__Moraxellaceae|g__Acinetobacter|s__Acinetobacter baumannii|t__Acinetobacter baumannii UH0207;dataset=refseq;CARD=mphD
+
+Next, the ORF nucleotide fasta files of all metagenomes and genomes were concatenated into a single large fasta file, subjected to clustering.
+
+### From catalogue of ARG ORFs to the clustered catalogues of ARGs
+
+clustering commands
+
+```
+faa=AMR_genes.gut_and_refseq.pool.corrected.s2_.fna
+mmseqs createdb ${faa} ${faa}.mmdb
+
+# 100% identity 90% coverage clustering
+mkdir nt_cluster_100_tmp
+mmseqs cluster ${faa}.mmdb nt_clusters_not_linc_i100_c90/nt_cluster_100 nt_cluster_100_tmp --threads 12 --min-seq-id 1.0 -c 0.90 --cov-mode 0
+mmseqs createtsv ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i100_c90/nt_cluster_100 nt_clusters_not_linc_i100_c90/nt_cluster_100.tsv
+mmseqs result2repseq ${faa}.mmdb nt_clusters_not_linc_i100_c90/nt_cluster_100 nt_clusters_not_linc_i100_c90/nt_cluster_100_rep
+mmseqs result2flat ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i100_c90/nt_cluster_100_rep nt_clusters_not_linc_i100_c90/nt_cluster_100_rep.fasta
+
+# 99% identity 90% coverage clustering
+mkdir nt_cluster_99_tmp
+mmseqs cluster ${faa}.mmdb nt_clusters_not_linc_i99_c90/nt_cluster_99 nt_cluster_99_tmp --threads 12 --min-seq-id 0.99 -c 0.90 --cov-mode 0
+mmseqs createtsv ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i99_c90/nt_cluster_99 nt_clusters_not_linc_i99_c90/nt_cluster_99.tsv
+mmseqs result2repseq ${faa}.mmdb nt_clusters_not_linc_i99_c90/nt_cluster_99 nt_clusters_not_linc_i99_c90/nt_cluster_99_rep
+mmseqs result2flat ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i99_c90/nt_cluster_99_rep nt_clusters_not_linc_i99_c90/nt_cluster_99_rep.fasta
+
+# 95% identity 80% coverage clustering
+mkdir nt_cluster_95_tmp
+mmseqs cluster ${faa}.mmdb nt_clusters_not_linc_i95_c80/nt_cluster_95 nt_cluster_95_tmp --threads 12 --min-seq-id 0.95 -c 0.80 --cov-mode 0
+mmseqs createtsv ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i95_c80/nt_cluster_95 nt_clusters_not_linc_i95_c80/nt_cluster_95.tsv
+mmseqs result2repseq ${faa}.mmdb nt_clusters_not_linc_i95_c80/nt_cluster_95 nt_clusters_not_linc_i95_c80/nt_cluster_95_rep
+mmseqs result2flat ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i95_c80/nt_cluster_95_rep nt_clusters_not_linc_i95_c80/nt_cluster_95_rep.fasta
+
+# 90% identity 80% coverage clustering
+mkdir nt_cluster_90_tmp
+mmseqs cluster ${faa}.mmdb nt_clusters_not_linc_i90_c80/nt_cluster_90 nt_cluster_90_tmp --threads 12 --min-seq-id 0.90 -c 0.80 --cov-mode 0
+mmseqs createtsv ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i90_c80/nt_cluster_90 nt_clusters_not_linc_i90_c80/nt_cluster_90.tsv
+mmseqs result2repseq ${faa}.mmdb nt_clusters_not_linc_i90_c80/nt_cluster_90 nt_clusters_not_linc_i90_c80/nt_cluster_90_rep
+mmseqs result2flat ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i90_c80/nt_cluster_90_rep nt_clusters_not_linc_i90_c80/nt_cluster_90_rep.fasta
+
+```
+
+
+### Assign LCA to the clusters of ARGs
+
+### Calculating resistotype scale index to the samples outside the original Pasolli et al. 2019 dataset
 
