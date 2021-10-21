@@ -197,10 +197,10 @@ java PrepRichTitledFeatureFastaForDBHitORFs -s refseq -d refseq -f {GACC}.fna -a
 
 The resulting fasta files, created for each metagenome/genome contains information-rich header lines which will be later used in the analyses downstream of clustering step.
 
-> # metagenomic ORF's header line
+Header lines for metagenomic ORFs look like:
 > \>NODE_1_length_562825_cov_57.8364_1;sample=MV_FEI1_t1Q14;genomeBin=AsnicarF_2017__MV_FEI1_t1Q14__bin.8;SGB=10068;taxonomy=k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae|g__Escherichia|s__Escherichia_coli|t__SGB10068;dataset=gut;COG=COG1215
 
-> # genomic ORF's header line
+Header lines for genomic ORFs look like:
 > \>NZ_AYGS01000026.1_2;sample=refseq;refGenome=GCF_000513795.2;refSpecies=TBD;taxonomy=k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Pseudomonadales|f__Moraxellaceae|g__Acinetobacter|s__Acinetobacter baumannii|t__Acinetobacter baumannii UH0207;dataset=refseq;CARD=mphD
 
 Next, the ORF nucleotide fasta files of all metagenomes and genomes were concatenated into a single large fasta file, subjected to clustering.
@@ -210,36 +210,36 @@ Next, the ORF nucleotide fasta files of all metagenomes and genomes were concate
 clustering commands
 
 ```
-faa=AMR_genes.gut_and_refseq.pool.corrected.s2_.fna
-mmseqs createdb ${faa} ${faa}.mmdb
+\# fna = {single fasta file containing all ARG ORF nucleotide sequences with information-rich header lines}
+mmseqs createdb ${fna} ${fna}.mmdb
 
 # 100% identity 90% coverage clustering
 mkdir nt_cluster_100_tmp
-mmseqs cluster ${faa}.mmdb nt_clusters_not_linc_i100_c90/nt_cluster_100 nt_cluster_100_tmp --threads 12 --min-seq-id 1.0 -c 0.90 --cov-mode 0
-mmseqs createtsv ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i100_c90/nt_cluster_100 nt_clusters_not_linc_i100_c90/nt_cluster_100.tsv
-mmseqs result2repseq ${faa}.mmdb nt_clusters_not_linc_i100_c90/nt_cluster_100 nt_clusters_not_linc_i100_c90/nt_cluster_100_rep
-mmseqs result2flat ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i100_c90/nt_cluster_100_rep nt_clusters_not_linc_i100_c90/nt_cluster_100_rep.fasta
+mmseqs cluster ${fna}.mmdb nt_clusters_not_linc_i100_c90/nt_cluster_100 nt_cluster_100_tmp --threads 12 --min-seq-id 1.0 -c 0.90 --cov-mode 0
+mmseqs createtsv ${fna}.mmdb ${faa}.mmdb nt_clusters_not_linc_i100_c90/nt_cluster_100 nt_clusters_not_linc_i100_c90/nt_cluster_100.tsv
+mmseqs result2repseq ${fna}.mmdb nt_clusters_not_linc_i100_c90/nt_cluster_100 nt_clusters_not_linc_i100_c90/nt_cluster_100_rep
+mmseqs result2flat ${fna}.mmdb ${faa}.mmdb nt_clusters_not_linc_i100_c90/nt_cluster_100_rep nt_clusters_not_linc_i100_c90/nt_cluster_100_rep.fasta
 
 # 99% identity 90% coverage clustering
 mkdir nt_cluster_99_tmp
-mmseqs cluster ${faa}.mmdb nt_clusters_not_linc_i99_c90/nt_cluster_99 nt_cluster_99_tmp --threads 12 --min-seq-id 0.99 -c 0.90 --cov-mode 0
-mmseqs createtsv ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i99_c90/nt_cluster_99 nt_clusters_not_linc_i99_c90/nt_cluster_99.tsv
-mmseqs result2repseq ${faa}.mmdb nt_clusters_not_linc_i99_c90/nt_cluster_99 nt_clusters_not_linc_i99_c90/nt_cluster_99_rep
-mmseqs result2flat ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i99_c90/nt_cluster_99_rep nt_clusters_not_linc_i99_c90/nt_cluster_99_rep.fasta
+mmseqs cluster ${fna}.mmdb nt_clusters_not_linc_i99_c90/nt_cluster_99 nt_cluster_99_tmp --threads 12 --min-seq-id 0.99 -c 0.90 --cov-mode 0
+mmseqs createtsv ${fna}.mmdb ${faa}.mmdb nt_clusters_not_linc_i99_c90/nt_cluster_99 nt_clusters_not_linc_i99_c90/nt_cluster_99.tsv
+mmseqs result2repseq ${fna}.mmdb nt_clusters_not_linc_i99_c90/nt_cluster_99 nt_clusters_not_linc_i99_c90/nt_cluster_99_rep
+mmseqs result2flat ${fna}.mmdb ${faa}.mmdb nt_clusters_not_linc_i99_c90/nt_cluster_99_rep nt_clusters_not_linc_i99_c90/nt_cluster_99_rep.fasta
 
 # 95% identity 80% coverage clustering
 mkdir nt_cluster_95_tmp
-mmseqs cluster ${faa}.mmdb nt_clusters_not_linc_i95_c80/nt_cluster_95 nt_cluster_95_tmp --threads 12 --min-seq-id 0.95 -c 0.80 --cov-mode 0
-mmseqs createtsv ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i95_c80/nt_cluster_95 nt_clusters_not_linc_i95_c80/nt_cluster_95.tsv
-mmseqs result2repseq ${faa}.mmdb nt_clusters_not_linc_i95_c80/nt_cluster_95 nt_clusters_not_linc_i95_c80/nt_cluster_95_rep
-mmseqs result2flat ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i95_c80/nt_cluster_95_rep nt_clusters_not_linc_i95_c80/nt_cluster_95_rep.fasta
+mmseqs cluster ${fna}.mmdb nt_clusters_not_linc_i95_c80/nt_cluster_95 nt_cluster_95_tmp --threads 12 --min-seq-id 0.95 -c 0.80 --cov-mode 0
+mmseqs createtsv ${fna}.mmdb ${faa}.mmdb nt_clusters_not_linc_i95_c80/nt_cluster_95 nt_clusters_not_linc_i95_c80/nt_cluster_95.tsv
+mmseqs result2repseq ${fna}.mmdb nt_clusters_not_linc_i95_c80/nt_cluster_95 nt_clusters_not_linc_i95_c80/nt_cluster_95_rep
+mmseqs result2flat ${fna}.mmdb ${faa}.mmdb nt_clusters_not_linc_i95_c80/nt_cluster_95_rep nt_clusters_not_linc_i95_c80/nt_cluster_95_rep.fasta
 
 # 90% identity 80% coverage clustering
 mkdir nt_cluster_90_tmp
-mmseqs cluster ${faa}.mmdb nt_clusters_not_linc_i90_c80/nt_cluster_90 nt_cluster_90_tmp --threads 12 --min-seq-id 0.90 -c 0.80 --cov-mode 0
-mmseqs createtsv ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i90_c80/nt_cluster_90 nt_clusters_not_linc_i90_c80/nt_cluster_90.tsv
-mmseqs result2repseq ${faa}.mmdb nt_clusters_not_linc_i90_c80/nt_cluster_90 nt_clusters_not_linc_i90_c80/nt_cluster_90_rep
-mmseqs result2flat ${faa}.mmdb ${faa}.mmdb nt_clusters_not_linc_i90_c80/nt_cluster_90_rep nt_clusters_not_linc_i90_c80/nt_cluster_90_rep.fasta
+mmseqs cluster ${fna}.mmdb nt_clusters_not_linc_i90_c80/nt_cluster_90 nt_cluster_90_tmp --threads 12 --min-seq-id 0.90 -c 0.80 --cov-mode 0
+mmseqs createtsv ${fna}.mmdb ${faa}.mmdb nt_clusters_not_linc_i90_c80/nt_cluster_90 nt_clusters_not_linc_i90_c80/nt_cluster_90.tsv
+mmseqs result2repseq ${fna}.mmdb nt_clusters_not_linc_i90_c80/nt_cluster_90 nt_clusters_not_linc_i90_c80/nt_cluster_90_rep
+mmseqs result2flat ${fna}.mmdb ${faa}.mmdb nt_clusters_not_linc_i90_c80/nt_cluster_90_rep nt_clusters_not_linc_i90_c80/nt_cluster_90_rep.fasta
 
 ```
 
