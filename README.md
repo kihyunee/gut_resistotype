@@ -174,7 +174,7 @@ python cpg_profile_from_contig_orf_annotation.py --cov_stat {SAMPLE}.fasta --dep
 ```
 
 
-__*Resulting files that we produced at this point:*__\
+### Resulting files that we produced at this point
 - Normalized abundance of ARG families (cpgs; samples X ARG families matrix) in 6104 adult stool metagenomes: [tsv file](https://www.dropbox.com/s/qyudnh2cmm7unup/DS3.SCG_normalized_ARG_abund.columns_CARD_ref.n_6104.tsv?dl=0)
 - Normalized abundance of ARG families (cpgs; samples X ARG families matrix) in 6006 adult stool metagenomes after filtering out outliers: [tsv file](https://www.dropbox.com/s/i84y6xthebd1cvx/DS4b.SCG_normalized_ARG_abund.columns_CARD_ref.n_6006.tsv?dl=0)
 * Note that sample names are given as row names and ARG family names are given as column names.
@@ -213,7 +213,7 @@ Header lines for genomic ORFs look like:
 Next, the ORF nucleotide fasta files of all metagenomes and genomes were concatenated into a single large fasta file, subjected to clustering.
 
 
-*__Resulting files that we produced at this point:__*\
+### Resulting files that we produced at this point
 - Nucleotide sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes, before clustering: [Fasta file](https://www.dropbox.com/s/7zl4h7lxubbcwjs/AMR_genes.gut_and_refseq.pool.corrected.s2_.fna?dl=0)
 - Protein sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes, before clustering: [Fasta file](https://www.dropbox.com/s/wrveigfi7opyiyf/AMR_genes.gut_and_refseq.pool.corrected.s2_.faa?dl=0)
 
@@ -258,12 +258,36 @@ mmseqs result2flat ${fna}.mmdb ${faa}.mmdb nt_clusters_not_linc_i90_c80/nt_clust
 
 ```
 
-*__Resulting files that we produced at this point:__*\
+### Resulting files that we produced at this point
 - ORF-by-ORF attributes from 99%-level clustering and plasmid analyses: [tsv file](https://www.dropbox.com/s/nnqwoixvx7tygw9/nt_cluster_99.per_ORF_integrated_result.all_ORFs.tsv?dl=0)
 
 
 
 ### Assign LCA to the clusters of ARGs
+
+We performed assignment of LCA taxon to each ARG cluster defined at 99% identity.
+- LCA for each cluster derived from the cluster member ORFs that came from either a RefSeq genome or a high-quality MAG.
+- Every single RefSeq genome and high-quality MAG has pre-defined species-level genomic bin (SGB) affiliation and full-rank taxonomy. See the files linked below.
+- Clusters without any such genome-resolved ORF becomes 'unclassified'
+
+Mapping files used at this step:
+- Metagenome bin ID to SGB ID [tsv file]()  <-- SGB.2019Sep_update.SGBs.reconstructed_genome_ID_map.hq_subset.txt
+- RefSeq genome assembly accession to SGB ID [tsv file]()   <--  our_refseq_analyzed.in_updated_SGB_system.map_to_SGB
+- SGB ID to full rank taxonomy [tsv file]()     <-- SGB.2019Sep_update.SGBs.SGBID_to_taxonomy.lca_style_kp2SGB.tab
+- List of high-quality MAGs [txt file]()       <-- MAG_HQ_only.list
+
+
+Now LCA assignment was performed using the following command,\
+where
+> {CLUSTER_TSV} = the output tsv file from *mmseqs createtsv* in the previous step
+> {HQMAG_LIST} = the file containing list of high-quality MAGs
+> {HQMAG_SGB_MAP} = 
+> {REFSEQ_SGB_MAP} = 
+> {SGB_TAX_MAP} = 
+```
+java GeneClusterTsvSubjectToSimpleLCAClassifier -i {CLUSTER_TSV} -hq {HQMAG_LIST} -r2s {REFSEQ_SGB_MAP} -h2s {HQMAG_SGB_MAP} -s2t {SGB_TAX_MAP} -o LCA_analysis_for_ARG_cl99.kp2SGB
+
+```
 
 ### Calculating resistotype scale index to the samples outside the original Pasolli et al. 2019 dataset
 
