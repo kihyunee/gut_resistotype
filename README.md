@@ -1,26 +1,30 @@
-# gut_resistotype
+# About
 
-### About
 **This is the repository for the analysis scripts and data files used in the following study:**
 
 Population-level impacts of antibiotic usage on the human gut microbiome. *Unpublished.* (2021) Kihyun Lee, Sebastien Raguideau, Kimmo Sir`en, Francesco Asnicar, Fabio Cumbo, Falk Hildebrand, Nicola Segata, Chang-Jun Cha, Christopher Quince
 
 
+
+
+
 # Data files
 
-### Databases used
+### Human microbiome metagenome assemblies
 
-**1. Human microbiome metagenome assemblies previously published in [Pasolli et al., 2019, Cell 176, 649–662](https://doi.org/10.1016/j.cell.2019.01.001)**
+Human microbiome metagenome assemblies previously published in [Pasolli et al., 2019, Cell 176, 649–662](https://doi.org/10.1016/j.cell.2019.01.001)**
 
 Fasta files can be accessed following the instructions provided in http://segatalab.cibio.unitn.it/data/Pasolli_et_al.html
 
 Sample metadata provided in Pasolli et al. 2019 was additionally curated with respect to (a) health and disease status of the subject and (b) antibiotic usage preceding the sampling. The final metadata used in our study is provided in this link: [microbiome sample metadata](https://github.com/kihyunee/gut_resistotype/blob/data/sfile-microbiome-sample-detail.tsv)
 
-**2. NCBI RefSeq prokaryotic genome assemblies accessed at 2019/04/19**
+### NCBI RefSeq prokaryotic genome assemblies 
 
-Assembly accession numbers (RefSeq/GenBank) of the prokaryotic genomes analyzed in our study is provided in this link: [genome accession list](https://github.com/kihyunee/gut_resistotype/blob/data/refseq_genbank_assembly_acc_pair.nover.tsv)
+We accessed all prokaryotic genomes available in NCBI RefSeq at 2019/04/19.
 
-**3. Modified version of CARD**
+Assembly accession numbers (RefSeq GCF_* / GenBank GCA_*) of the prokaryotic genomes analyzed in our study is provided in this link: [genome accession list](https://github.com/kihyunee/gut_resistotype/blob/data/refseq_genbank_assembly_acc_pair.nover.tsv)
+
+### Modified version of CARD used as the references for annotation of antibiotic resistance genes
 
 We used the database of protein sequences for known ARGs, which was created by modifying the October 2017 version of [CARD](https://card.mcmaster.ca/), cite [Jia et al. 2017](https://doi.org/10.1093/nar/gkw1004)
 
@@ -37,7 +41,7 @@ For this modified version of CARD, the following files are provided in this repo
 (5) [list of 752 ARG family names covered in our annotation DB](https://github.com/kihyunee/gut_resistotype/blob/data/reference_ARG_assigns.txt)
 
 
-**4. COG protein reference sequences**
+### COG protein sequences
 
 We used COG, the 2014 update version, accessed through NCBI FTP at December 2018 using the following link [COG 2014 protein fasta](https://ftp.ncbi.nih.gov/pub/COG/COG2014/data/prot2003-2014.fa.gz)
 
@@ -48,29 +52,13 @@ Mapping from gi numbers (used in COG protein sequence headers) to COG numbers is
 shorter version for [gi-to-COG mapping for the SCGs](https://github.com/kihyunee/gut_resistotype/blob/data/gi_to_cog.tab.scg_only)
 
 
-### (Clustered) Catalogue of ARG ORFs from human microbiome metagenomes and prokaryotic reference genomes
-
-*Before clustering*
-
-Nucleotide sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes: [Fasta file](https://www.dropbox.com/s/7zl4h7lxubbcwjs/AMR_genes.gut_and_refseq.pool.corrected.s2_.fna?dl=0)
-
-Protein sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes: [Fasta file](https://www.dropbox.com/s/wrveigfi7opyiyf/AMR_genes.gut_and_refseq.pool.corrected.s2_.faa?dl=0)
-
-- Fasta header lines contain several information including sample origin, MAG affiliation, SGB (species) affiliation, taxonomy, and ARG family annotation
-
-*After clustering*
-ORF-by-ORF attributes from 99%-level clustering and plasmid analyses: [tsv file](https://www.dropbox.com/s/nnqwoixvx7tygw9/nt_cluster_99.per_ORF_integrated_result.all_ORFs.tsv?dl=0)
-
-
-### Normalized resistance gene profiles (cpg, samples X ARG families matrix) of adult stool metagenomes
-[abundance cpg of ARG families in 6104 adult stool metagenomes](https://www.dropbox.com/s/qyudnh2cmm7unup/DS3.SCG_normalized_ARG_abund.columns_CARD_ref.n_6104.tsv?dl=0)
-[abundance cpg of ARG families in 6006 adult stool metagenomes after filtering out outliers](https://www.dropbox.com/s/i84y6xthebd1cvx/DS4b.SCG_normalized_ARG_abund.columns_CARD_ref.n_6006.tsv?dl=0)
-- Sample names are given as row names.
-- ARG family names are given as column names.
 
 
 
-# Analytical steps
+
+
+
+# Tools used in our computational analysis steps
 
 Below are the commands and scripts used in our main analytical steps.
 
@@ -83,6 +71,11 @@ External tools called in the commands are:
 Databases and fixed parameter files (such as list of SCGs, list of ARG families) can be found in the data branch of this repository.
 
 _Note_ that before using the .fasta database files in blastp searches you have to create diamond database _locally_ using your version of diamond. 
+
+
+
+
+
 
 
 ### From assembled metagenomes to annotated ORFs
@@ -123,6 +116,8 @@ Snakemake that we used to predict and annotate ORFs in metagenome assemblies is 
 Note that file paths in the snakemake should be adjusted to fit with yours.
 
 
+
+
 ### From reference genomes to annotated ORFs
 
 For genome assemblies, we used the set of commands that are same with what was used for metagenom assemlbies.
@@ -132,7 +127,11 @@ Snakemake that we used to predict and annotate ORFs in metagenome assemblies is 
 Note that file paths in the snakemake should be adjusted to fit with yours.
 
 
-### From annotated metagenomic ORFs to nomalized abundance (copies per genome, cpg) profile of ARG families in samples
+
+
+
+
+### Creating nomalized abundance profiles of ARG families (copies per genome, cpg)
 
 **Case A, where you want to use contig coverage depth calculated by yourself through aligning reads to the contigs.**
 
@@ -175,7 +174,15 @@ python cpg_profile_from_contig_orf_annotation.py --cov_stat {SAMPLE}.fasta --dep
 ```
 
 
-### From annotated ORFs from metagenomes and reference genomes to the catalogue of ARG ORFs
+__*Resulting files that we produced at this point:*__\
+- Normalized abundance of ARG families (cpgs; samples X ARG families matrix) in 6104 adult stool metagenomes: [tsv file](https://www.dropbox.com/s/qyudnh2cmm7unup/DS3.SCG_normalized_ARG_abund.columns_CARD_ref.n_6104.tsv?dl=0)
+- Normalized abundance of ARG families (cpgs; samples X ARG families matrix) in 6006 adult stool metagenomes after filtering out outliers: [tsv file](https://www.dropbox.com/s/i84y6xthebd1cvx/DS4b.SCG_normalized_ARG_abund.columns_CARD_ref.n_6006.tsv?dl=0)
+* Note that sample names are given as row names and ARG family names are given as column names.
+
+
+
+
+### Creating the catalogue of ARG sequences from the metagenomes and the reference genomes
 
 We first collected the nucleotide sequences of the ORFs annotated as ARGs, from both metagenomes and genomes.
 
@@ -205,9 +212,17 @@ Header lines for genomic ORFs look like:
 
 Next, the ORF nucleotide fasta files of all metagenomes and genomes were concatenated into a single large fasta file, subjected to clustering.
 
-### From catalogue of ARG ORFs to the clustered catalogues of ARGs
 
-clustering commands
+*__Resulting files that we produced at this point:__*\
+- Nucleotide sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes, before clustering: [Fasta file](https://www.dropbox.com/s/7zl4h7lxubbcwjs/AMR_genes.gut_and_refseq.pool.corrected.s2_.fna?dl=0)
+- Protein sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes, before clustering: [Fasta file](https://www.dropbox.com/s/wrveigfi7opyiyf/AMR_genes.gut_and_refseq.pool.corrected.s2_.faa?dl=0)
+
+
+
+
+
+Then perform clustering on the nucleotides sequences (rather than amino acid sequences) at several identity cutoffs,\
+using the following clustering commands:
 
 ```
 \# fna = {single fasta file containing all ARG ORF nucleotide sequences with information-rich header lines}
@@ -242,6 +257,10 @@ mmseqs result2repseq ${fna}.mmdb nt_clusters_not_linc_i90_c80/nt_cluster_90 nt_c
 mmseqs result2flat ${fna}.mmdb ${faa}.mmdb nt_clusters_not_linc_i90_c80/nt_cluster_90_rep nt_clusters_not_linc_i90_c80/nt_cluster_90_rep.fasta
 
 ```
+
+*__Resulting files that we produced at this point:__*\
+- ORF-by-ORF attributes from 99%-level clustering and plasmid analyses: [tsv file](https://www.dropbox.com/s/nnqwoixvx7tygw9/nt_cluster_99.per_ORF_integrated_result.all_ORFs.tsv?dl=0)
+
 
 
 ### Assign LCA to the clusters of ARGs
