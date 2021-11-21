@@ -281,13 +281,13 @@ Now LCA assignment was performed using the following command,\
 where
 > {CLUSTER_TSV} = the output tsv file from *mmseqs createtsv* in the previous step
 > {HQMAG_LIST} = the file containing list of high-quality MAGs
-> {HQMAG_SGB_MAP} = 
-> {REFSEQ_SGB_MAP} = 
-> {SGB_TAX_MAP} = 
+> {HQMAG_SGB_MAP} = the file mapping from metagenome bin ID to SGB ID
+> {REFSEQ_SGB_MAP} = the file mapping from RefSeq genome assembly accession to SGB ID
+> {SGB_TAX_MAP} = the file mapping from SGB ID to the full rank taxonomy
+run\
 ```
 java GeneClusterTsvSubjectToSimpleLCAClassifier -i {CLUSTER_TSV} -hq {HQMAG_LIST} -r2s {REFSEQ_SGB_MAP} -h2s {HQMAG_SGB_MAP} -s2t {SGB_TAX_MAP} -o LCA_analysis_for_ARG_cl99.kp2SGB
 
+lca.py -i LCA_analysis_for_ARG_cl99.kp2SGB.LCAsub_hqPlusRef -o LCA_analysis_for_ARG_cl99.kp2SGB.result_using_HQPlusRef -b 999 -id 0 -cov 0 -tid 0 -tcov 0 -t no -fh "env" -flh "unknown"
 ```
-
-### Calculating resistotype scale index to the samples outside the original Pasolli et al. 2019 dataset
 
