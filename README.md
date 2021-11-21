@@ -284,7 +284,8 @@ where
 > {HQMAG_SGB_MAP} = the file mapping from metagenome bin ID to SGB ID\
 > {REFSEQ_SGB_MAP} = the file mapping from RefSeq genome assembly accession to SGB ID\
 > {SGB_TAX_MAP} = the file mapping from SGB ID to the full rank taxonomy
-run\
+
+run
 ```
 java GeneClusterTsvSubjectToSimpleLCAClassifier -i {CLUSTER_TSV} -hq {HQMAG_LIST} -r2s {REFSEQ_SGB_MAP} -h2s {HQMAG_SGB_MAP} -s2t {SGB_TAX_MAP} -o LCA_analysis_for_ARG_cl99.kp2SGB
 
