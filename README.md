@@ -279,10 +279,10 @@ Mapping files used at this step:
 
 Now LCA assignment was performed using the following command,\
 where
-> {CLUSTER_TSV} = the output tsv file from *mmseqs createtsv* in the previous step
-> {HQMAG_LIST} = the file containing list of high-quality MAGs
-> {HQMAG_SGB_MAP} = the file mapping from metagenome bin ID to SGB ID
-> {REFSEQ_SGB_MAP} = the file mapping from RefSeq genome assembly accession to SGB ID
+> {CLUSTER_TSV} = the output tsv file from *mmseqs createtsv* in the previous step\
+> {HQMAG_LIST} = the file containing list of high-quality MAGs\
+> {HQMAG_SGB_MAP} = the file mapping from metagenome bin ID to SGB ID\
+> {REFSEQ_SGB_MAP} = the file mapping from RefSeq genome assembly accession to SGB ID\
 > {SGB_TAX_MAP} = the file mapping from SGB ID to the full rank taxonomy
 run\
 ```
