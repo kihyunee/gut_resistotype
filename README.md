@@ -10,7 +10,7 @@ Population-level impacts of antibiotic usage on the human gut microbiome. *Unpub
 
 # Data files
 
-**Some of the files linked here are hosted in zenodo at https://doi.org/10.5281/zenodo.7188054**
+**Multiple links will be provided for the same file, sometimes, using dropbox and zenodo. You can also visit to the zenodo page https://doi.org/10.5281/zenodo.7383076**
 
 ### Human microbiome metagenome assemblies
 
@@ -18,13 +18,13 @@ Human microbiome metagenome assemblies previously published in [Pasolli et al., 
 
 Fasta files can be accessed following the instructions provided in http://segatalab.cibio.unitn.it/data/Pasolli_et_al.html
 
-Sample metadata provided in Pasolli et al. 2019 was additionally curated with respect to (a) health and disease status of the subject and (b) antibiotic usage preceding the sampling. The final metadata used in our study is provided in this link: [microbiome sample metadata tsv](https://github.com/kihyunee/gut_resistotype/blob/data/sfile-microbiome-sample-detail.tsv) or [microbiome sample metadata tsv, zenodo](https://zenodo.org/record/7188054/files/sfile-microbiome-sample-detail.tsv?download=1)
+Sample metadata provided in Pasolli et al. 2019 was additionally curated with respect to (a) health and disease status of the subject and (b) antibiotic usage preceding the sampling. The final metadata used in our study is provided in this link: [microbiome sample metadata tsv](https://github.com/kihyunee/gut_resistotype/blob/data/sfile-microbiome-sample-detail.tsv) or [microbiome sample metadata tsv zenodo](https://zenodo.org/record/7188054/files/sfile-microbiome-sample-detail.tsv?download=1)
 
 ### NCBI RefSeq prokaryotic genome assemblies 
 
 We accessed all prokaryotic genomes available in NCBI RefSeq at 2019/04/19.
 
-Assembly accession numbers (RefSeq GCF_* / GenBank GCA_*) of the prokaryotic genomes analyzed in our study is provided in this link: [genome accession list](https://github.com/kihyunee/gut_resistotype/blob/data/refseq_genbank_assembly_acc_pair.nover.tsv)
+Assembly accession numbers (RefSeq GCF_* / GenBank GCA_*) of the prokaryotic genomes analyzed in our study is provided in this link: [genome accession list tsv](https://github.com/kihyunee/gut_resistotype/blob/data/refseq_genbank_assembly_acc_pair.nover.tsv) [genome accession list tsv zenodo](https://zenodo.org/record/7188054/files/refseq_genbank_assembly_acc_pair.nover.tsv?download=1)
 
 ### Modified version of CARD used as the references for annotation of antibiotic resistance genes
 
@@ -32,26 +32,26 @@ We used the database of protein sequences for known ARGs, which was created by m
 
 For this modified version of CARD, the following files are provided in this repository.
 
-(1) [fasta file of protein homolog model reference sequences after filtering out variant/mutation-dependent resistance genes](https://github.com/kihyunee/gut_resistotype/blob/data/protein_fasta_protein_homolog_model.refined.legit.fasta)
+(1) [fasta file of protein homolog model reference sequences after filtering out variant/mutation-dependent resistance genes](https://github.com/kihyunee/gut_resistotype/blob/data/protein_fasta_protein_homolog_model.refined.legit.fasta) [fasta file of protein homolog model reference sequences after filtering out variant/mutation-dependent resistance genes zenodo](https://zenodo.org/record/7188054/files/protein_fasta_protein_homolog_model.refined.legit.fasta?download=1)
 
-(2) [protein accessions to ARG families map](https://github.com/kihyunee/gut_resistotype/blob/data/protein_fasta_protein_homolog_model.refined.accession_2_ARG_cluster_assign.tab)
+(2) [protein accessions to ARG families map tsv](https://github.com/kihyunee/gut_resistotype/blob/data/protein_fasta_protein_homolog_model.refined.accession_2_ARG_cluster_assign.tab) [protein accessions to ARG families map tsv zenodo](https://zenodo.org/record/7188054/files/protein_fasta_protein_homolog_model.refined.accession_2_ARG_cluster_assign.tab?download=1)
 
-(3) [ARG families to antibiotics map](https://github.com/kihyunee/gut_resistotype/blob/data/ClusterAssign_to_Revised_Antibiotic.map)
+(3) [ARG families to antibiotics map tsv](https://github.com/kihyunee/gut_resistotype/blob/data/ClusterAssign_to_Revised_Antibiotic.map) [ARG families to antibiotics map tsv zenodo](https://zenodo.org/record/7188054/files/ClusterAssign_to_Revised_Antibiotic.map?download=1)
 
-(4) [ARG families to mechanisms map](https://github.com/kihyunee/gut_resistotype/blob/data/ClusterAssign_to_Revised_Mechanism.map)
+(4) [ARG families to mechanisms map tsv](https://github.com/kihyunee/gut_resistotype/blob/data/ClusterAssign_to_Revised_Mechanism.map) [ARG families to mechanisms map tsv zenodo](https://zenodo.org/record/7188054/files/ClusterAssign_to_Revised_Mechanism.map?download=1)
 
-(5) [list of 752 ARG family names covered in our annotation DB](https://github.com/kihyunee/gut_resistotype/blob/data/reference_ARG_assigns.txt)
+(5) [list of 752 ARG family names covered in our annotation DB txt](https://github.com/kihyunee/gut_resistotype/blob/data/reference_ARG_assigns.txt) [list of 752 ARG family names covered in our annotation DB txt zenodo](https://zenodo.org/record/7188054/files/reference_ARG_assigns.txt?download=1)
 
 
 ### COG protein sequences
 
 We used COG, the 2014 update version, accessed through NCBI FTP at December 2018 using the following link [COG 2014 protein fasta](https://ftp.ncbi.nih.gov/pub/COG/COG2014/data/prot2003-2014.fa.gz)
 
-Our analysis using COG is focused at the list of [40 universally single-copy orthologs, SCGs](https://github.com/kihyunee/gut_resistotype/blob/data/list_speci_universal_single_copy_genes.cogs)
+Our analysis using COG is focused at the list of [40 universally single-copy orthologs SCGs txt](https://github.com/kihyunee/gut_resistotype/blob/data/list_speci_universal_single_copy_genes.cogs) [40 universally single-copy orthologs SCGs txt zenodo](https://zenodo.org/record/7188054/files/list_speci_universal_single_copy_genes.cogs?download=1)
 
-Mapping from gi numbers (used in COG protein sequence headers) to COG numbers is needed and provided in this link:[gi-to-COG mapping](https://www.dropbox.com/s/srr6tzim5d4f324/gi_to_cog.tab?dl=0)
+Mapping from gi numbers (used in COG protein sequence headers) to COG numbers is needed and provided in this link:[gi-to-COG mapping tsv](https://www.dropbox.com/s/srr6tzim5d4f324/gi_to_cog.tab?dl=0) [gi-to-COG mapping tsv zenodo](https://zenodo.org/record/7188054/files/gi_to_cog.tab?download=1)
 
-shorter version for [gi-to-COG mapping for the SCGs](https://github.com/kihyunee/gut_resistotype/blob/data/gi_to_cog.tab.scg_only)
+shorter version only containing the COGs representing 40 SCGs [gi-to-COG mapping SCGs only tsv](https://github.com/kihyunee/gut_resistotype/blob/data/gi_to_cog.tab.scg_only) [gi-to-COG mapping SCGs only tsv zenodo](https://zenodo.org/record/7188054/files/gi_to_cog.tab.scg_only?download=1)
 
 
 
@@ -177,8 +177,8 @@ python cpg_profile_from_contig_orf_annotation.py --cov_stat {SAMPLE}.fasta --dep
 
 
 ### Resulting files that we produced at this point
-- Normalized abundance of ARG families (cpgs; samples X ARG families matrix) in 6104 adult stool metagenomes: [tsv file](https://www.dropbox.com/s/qyudnh2cmm7unup/DS3.SCG_normalized_ARG_abund.columns_CARD_ref.n_6104.tsv?dl=0)
-- Normalized abundance of ARG families (cpgs; samples X ARG families matrix) in 6006 adult stool metagenomes after filtering out outliers: [tsv file](https://www.dropbox.com/s/i84y6xthebd1cvx/DS4b.SCG_normalized_ARG_abund.columns_CARD_ref.n_6006.tsv?dl=0)
+- Normalized abundance of ARG families (cpgs; samples X ARG families matrix) in 6104 adult stool metagenomes: [tsv file dropbox](https://www.dropbox.com/s/qyudnh2cmm7unup/DS3.SCG_normalized_ARG_abund.columns_CARD_ref.n_6104.tsv?dl=0) [tsv file zenodo](https://zenodo.org/record/7188054/files/DS3.SCG_normalized_ARG_abund.columns_CARD_ref.n_6104.tsv?download=1)
+- Normalized abundance of ARG families (cpgs; samples X ARG families matrix) in 6006 adult stool metagenomes after filtering out outliers: [tsv file dropbox](https://www.dropbox.com/s/i84y6xthebd1cvx/DS4b.SCG_normalized_ARG_abund.columns_CARD_ref.n_6006.tsv?dl=0) [tsv file zenodo](https://zenodo.org/record/7188054/files/DS4b.SCG_normalized_ARG_abund.columns_CARD_ref.n_6006.tsv?download=1)
 * Note that sample names are given as row names and ARG family names are given as column names.
 
 
@@ -216,8 +216,8 @@ Next, the ORF nucleotide fasta files of all metagenomes and genomes were concate
 
 
 ### Resulting files that we produced at this point
-- Nucleotide sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes, before clustering: [Fasta file](https://www.dropbox.com/s/7zl4h7lxubbcwjs/AMR_genes.gut_and_refseq.pool.corrected.s2_.fna?dl=0)
-- Protein sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes, before clustering: [Fasta file](https://www.dropbox.com/s/wrveigfi7opyiyf/AMR_genes.gut_and_refseq.pool.corrected.s2_.faa?dl=0)
+- Nucleotide sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes, before clustering: [nt fasta file dropbox](https://www.dropbox.com/s/7zl4h7lxubbcwjs/AMR_genes.gut_and_refseq.pool.corrected.s2_.fna?dl=0) [nt fasta file zenodo](https://zenodo.org/record/7188054/files/AMR_genes.gut_and_refseq.pool.corrected.s2_.fna?download=1)
+- Protein sequences of all 2,566,577 ARG ORFs pooled from metagenomes and reference genomes, before clustering: [aa fasta file dropbox](https://www.dropbox.com/s/wrveigfi7opyiyf/AMR_genes.gut_and_refseq.pool.corrected.s2_.faa?dl=0) [aa fasta file zenodo](https://zenodo.org/record/7188054/files/AMR_genes.gut_and_refseq.pool.corrected.s2_.faa?download=1)
 
 
 
@@ -261,7 +261,7 @@ mmseqs result2flat ${fna}.mmdb ${faa}.mmdb nt_clusters_not_linc_i90_c80/nt_clust
 ```
 
 ### Resulting files that we produced at this point
-- ORF-by-ORF attributes from 99%-level clustering and plasmid analyses: [tsv file](https://www.dropbox.com/s/nnqwoixvx7tygw9/nt_cluster_99.per_ORF_integrated_result.all_ORFs.tsv?dl=0)
+- ORF-by-ORF attributes from 99%-level clustering and plasmid analyses: [tsv file dropbox](https://www.dropbox.com/s/nnqwoixvx7tygw9/nt_cluster_99.per_ORF_integrated_result.all_ORFs.tsv?dl=0) [tsv file zenodo](https://zenodo.org/record/7188054/files/nt_cluster_99.per_ORF_integrated_result.all_ORFs.tsv?download=1)
 
 
 
@@ -273,10 +273,10 @@ We performed assignment of LCA taxon to each ARG cluster defined at 99% identity
 - Clusters without any such genome-resolved ORF becomes 'unclassified'
 
 Mapping files used at this step:
-- Metagenome bin ID to SGB ID [tsv file]()  <-- SGB.2019Sep_update.SGBs.reconstructed_genome_ID_map.hq_subset.txt
-- RefSeq genome assembly accession to SGB ID [tsv file]()   <--  our_refseq_analyzed.in_updated_SGB_system.map_to_SGB
-- SGB ID to full rank taxonomy [tsv file]()     <-- SGB.2019Sep_update.SGBs.SGBID_to_taxonomy.lca_style_kp2SGB.tab
-- List of high-quality MAGs [txt file]()       <-- MAG_HQ_only.list
+- Metagenome bin ID to SGB ID [tsv file](https://zenodo.org/record/7383076/files/SGB.2019Sep_update.SGBs.reconstructed_genome_ID_map.txt?download=1)
+- RefSeq genome assembly accession to SGB ID [tsv file](https://zenodo.org/record/7383076/files/our_refseq_analyzed.in_updated_SGB_system.map_to_SGB_taxonomy?download=1)
+- SGB ID to full rank taxonomy [tsv file](https://zenodo.org/record/7383076/files/SGB.2019Sep_update.SGBs.SGBID_to_taxonomy.lca_style_kp2SGB.tab?download=1)
+- List of high-quality MAGs [txt file](https://zenodo.org/record/7383076/files/MAG_HQ_only.list?download=1)
 
 
 Now LCA assignment was performed using the following command,\
