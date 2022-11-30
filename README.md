@@ -10,13 +10,15 @@ Population-level impacts of antibiotic usage on the human gut microbiome. *Unpub
 
 # Data files
 
+**Some of the files linked here are hosted in zenodo at https://doi.org/10.5281/zenodo.7188054**
+
 ### Human microbiome metagenome assemblies
 
 Human microbiome metagenome assemblies previously published in [Pasolli et al., 2019, Cell 176, 649–662](https://doi.org/10.1016/j.cell.2019.01.001)**
 
 Fasta files can be accessed following the instructions provided in http://segatalab.cibio.unitn.it/data/Pasolli_et_al.html
 
-Sample metadata provided in Pasolli et al. 2019 was additionally curated with respect to (a) health and disease status of the subject and (b) antibiotic usage preceding the sampling. The final metadata used in our study is provided in this link: [microbiome sample metadata](https://github.com/kihyunee/gut_resistotype/blob/data/sfile-microbiome-sample-detail.tsv)
+Sample metadata provided in Pasolli et al. 2019 was additionally curated with respect to (a) health and disease status of the subject and (b) antibiotic usage preceding the sampling. The final metadata used in our study is provided in this link: [microbiome sample metadata tsv](https://github.com/kihyunee/gut_resistotype/blob/data/sfile-microbiome-sample-detail.tsv) or [microbiome sample metadata tsv, zenodo](https://zenodo.org/record/7188054/files/sfile-microbiome-sample-detail.tsv?download=1)
 
 ### NCBI RefSeq prokaryotic genome assemblies 
 
